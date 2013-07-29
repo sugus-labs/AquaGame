@@ -11,7 +11,8 @@
   </style>
 
   <div id="right_span" class="row">
-    <div id="right_span" class="col-lg-4 alert alert-info">
+    <div id="right_span" class="col-lg-4 col-offset-1 alert alert-info">
+      
       <table class="table">
         <thead>  
           <tr>
@@ -24,22 +25,22 @@
         <tbody>  
           <tr>  
             <th>
-              <div id="draggable_1" class="ui-widget-content">
+              <div id="ball_blue" class="ui-widget-content">
                 <center><img src="{% static "img/ball_blue.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
               </div>
             </th>
             <th>
-              <div id="draggable_2" class="ui-widget-content">
+              <div id="ball_purple" class="ui-widget-content">
                 <center><img src="{% static "img/ball_purple.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
               </div>
             </th>
             <th>
-              <div id="draggable_3" class="ui-widget-content">
+              <div id="ball_yellow" class="ui-widget-content">
                 <center><img src="{% static "img/ball_yellow.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
               </div>
             </th>
             <th>
-              <div id="draggable_4" class="ui-widget-content">
+              <div id="ball_white" class="ui-widget-content">
                 <center><img src="{% static "img/ball_white.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
               </div>
             </th>
@@ -73,35 +74,38 @@
             <thead>  
               <tr>  
                 <th>
-                  <div id="table_column_1" class="ui-widget-content">
+                  <div id="droppable_1" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                    <p>Texto para debug</p>
                   </div>
                 </th>
                 <th>
-                  <div id="table_2" class="ui-widget-content">
+                  <div id="droppable_2" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                    <p>Texto para debug</p>
                   </div>
                 </th>
                 <th>
-                  <div id="table_3" class="ui-widget-content">
+                  <div id="droppable_3" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                    <p>Texto para debug</p>
                   </div>
                 </th>
                 <th>
-                  <div id="draggable_4" class="ui-widget-content">
+                  <div id="droppable_4" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                    <p>Texto para debug</p>
                   </div>
                 </th>
                 <th>
                   <div id="test_button" class="ui-widget-content">
-                    <button type="button" class="btn btn-success btn-block">Aciertos&nbsp;&nbsp;&nbsp;<span class="badge badge-default">42</span>&nbsp;</button>
-                    <button type="button" class="btn btn-danger btn-block">Errores&nbsp;&nbsp;&nbsp;<span class="badge">42</span>&nbsp;</button>
+                    <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+                    <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
                   </div>
                 </th>
               </tr>
             </thead>
           </table>
-          <p>Drop here</p>
         </div>
       </div>
     </div>
@@ -110,7 +114,7 @@
 
   <div id="right_span" class="row">
 
-   <div id="left_span" class="col-lg-5 col-offset-5">
+   <div id="left_span" class="col-lg-5 col-offset-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
@@ -124,7 +128,7 @@
 
   <div id="right_span" class="row">
 
-   <div id="left_span" class="col-lg-5 col-offset-5">
+   <div id="left_span" class="col-lg-5 col-offset-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
@@ -137,23 +141,26 @@
   </div>
 
 
-  <script>
+<script>
   $(function() {
-    $("#draggable_1").draggable();
-    $("#draggable_2").draggable();
-    $("#draggable_3").draggable();
-    $("#draggable_4").draggable();
-    $( "#droppable" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( "p" )
-            .html( "Dropped!" );
+    $('div[id^=ball_]').draggable();
+    $('div[id^=droppable_]').droppable({
+      drop: function(event, ui) {
+        $(this).addClass("ui-state-highlight").find("p").html(ui.draggable.attr('id'));
       }
     });
   });
-  </script>
-</head>
-<body>
+</script>
+
+// <script type="text/javascript">
+
+//    var myImageElement = document.getElementById('main_image');
+//    setInterval(function() {
+//     var myImageElement = document.getElementById('main_image');
+//     myImageElement.src = 'http://www.weblab.deusto.es/webcam/proxied.py/aquarium1?rand=' + Math.random();
+//    }, 600);
+
+// </script>
+
   
 {% endblock %}
