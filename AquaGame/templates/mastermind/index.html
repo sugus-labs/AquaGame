@@ -117,9 +117,59 @@
    <div id="left_span" class="col-lg-5 col-offset-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+          <h3 class="panel-title">
+            Arrastra aqui las bolas
+            <div class="btn-group pull-right">
+              <button type="button" class="btn btn-default">Acciones</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Corregir</a></li>
+                <li><a href="#">Ver un video</a></li>
+                <li><a href="#">Obtener una pista</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Borrar todo</a></li>
+              </ul>
+            </div>
+          </h3>
         </div>
         <div id="droppable" class="panel-footer ui-widget-header">
+          <table class="table">
+            <thead>  
+              <tr>  
+                <th>
+                  <div id="droppable_1" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_2" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_3" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_4" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+
+                  </div>
+                </th>
+                <th>
+                  <div id="test_button" class="ui-widget-content">
+                    <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+                    <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>
@@ -131,19 +181,74 @@
    <div id="left_span" class="col-lg-5 col-offset-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+          <h3 class="panel-title">
+            Arrastra aqui las bolas
+            <div class="btn-group pull-right">
+              <button type="button" class="btn btn-default">Acciones</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Corregir</a></li>
+                <li><a href="#">Ver un video</a></li>
+                <li><a href="#">Obtener una pista</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Borrar todo</a></li>
+              </ul>
+            </div>
+          </h3>
         </div>
         <div id="droppable" class="panel-footer ui-widget-header">
+          <table class="table">
+            <thead>  
+              <tr>  
+                <th>
+                  <div id="droppable_1" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_2" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_3" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="droppable_4" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="test_button" class="ui-widget-content">
+                    <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+                    <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>
-
   </div>
 
 
 <script>
   $(function() {
-    $('div[id^=ball_]').draggable();
+    $('div[id^=ball_]').draggable({
+                    revert : function(event, ui) {
+                        $(this).data("uiDraggable").originalPosition = {
+                            top : 0,
+                            left : 0
+                        };
+                        return !event;
+                    }
+                });
     $('div[id^=droppable_]').droppable({
       drop: function(event, ui) {
         $(this).addClass("ui-state-highlight").find("p").html(ui.draggable.attr('id'));
