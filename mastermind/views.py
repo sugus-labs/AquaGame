@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("index temporal page.")
+    return render(request, 'mastermind/index.html')
