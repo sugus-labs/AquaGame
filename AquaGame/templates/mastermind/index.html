@@ -51,9 +51,57 @@
     <div id="left_span" class="col-lg-5 col-offset-1">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+          <h3 class="panel-title">
+            Arrastra aqui las bolas
+            <div class="btn-group pull-right">
+              <button type="button" class="btn btn-default">Acciones</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Corregir</a></li>
+                <li><a href="#">Ver un video</a></li>
+                <li><a href="#">Obtener una pista</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Borrar todo</a></li>
+              </ul>
+            </div>
+          </h3>
         </div>
         <div id="droppable" class="panel-footer ui-widget-header">
+          <table class="table">
+            <thead>  
+              <tr>  
+                <th>
+                  <div id="table_column_1" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="table_2" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="table_3" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="draggable_4" class="ui-widget-content">
+                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+                  </div>
+                </th>
+                <th>
+                  <div id="test_button" class="ui-widget-content">
+                    <button type="button" class="btn btn-success btn-block">Aciertos&nbsp;&nbsp;&nbsp;<span class="badge badge-default">42</span>&nbsp;</button>
+                    <button type="button" class="btn btn-danger btn-block">Errores&nbsp;&nbsp;&nbsp;<span class="badge">42</span>&nbsp;</button>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <p>Drop here</p>
         </div>
       </div>
     </div>
@@ -99,7 +147,7 @@
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )
-          .find( "h3" )
+          .find( "p" )
             .html( "Dropped!" );
       }
     });
