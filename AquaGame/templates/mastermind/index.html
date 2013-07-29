@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %} 
+
+  {% load staticfiles %}
+
+  <style>
+  #droppable { height: 150px; }
+  </style>
+
+  <div id="right_span" class="row">
+    <div id="right_span" class="col-lg-4 alert alert-info">
+      <table class="table">
+        <thead>  
+          <tr>
+            <th><center>AGUA</center></th>  
+            <th><center>AGUA</center></th>  
+            <th><center>ACEITE</center></th>  
+            <th><center>GASOLINA</center></th>  
+          </tr>  
+        </thead>
+        <tbody>  
+          <tr>  
+            <th>
+              <div id="draggable_1" class="ui-widget-content">
+                <center><img src="{% static "img/ball_blue.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
+              </div>
+            </th>
+            <th>
+              <div id="draggable_2" class="ui-widget-content">
+                <center><img src="{% static "img/ball_purple.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
+              </div>
+            </th>
+            <th>
+              <div id="draggable_3" class="ui-widget-content">
+                <center><img src="{% static "img/ball_yellow.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
+              </div>
+            </th>
+            <th>
+              <div id="draggable_4" class="ui-widget-content">
+                <center><img src="{% static "img/ball_white.png" %}" width= "100px" height="100px" style="position: relative; z-index: 99;"/></center>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   
+    <div id="left_span" class="col-lg-5 col-offset-1">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+        </div>
+        <div id="droppable" class="panel-footer ui-widget-header">
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <div id="right_span" class="row">
+
+   <div id="left_span" class="col-lg-5 col-offset-5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+        </div>
+        <div id="droppable" class="panel-footer ui-widget-header">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="right_span" class="row">
+
+   <div id="left_span" class="col-lg-5 col-offset-5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><p>Arrastra aqui las bolas</p></h3>
+        </div>
+        <div id="droppable" class="panel-footer ui-widget-header">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+  $(function() {
+    $("#draggable_1").draggable();
+    $("#draggable_2").draggable();
+    $("#draggable_3").draggable();
+    $("#draggable_4").draggable();
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "h3" )
+            .html( "Dropped!" );
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  
+{% endblock %}
