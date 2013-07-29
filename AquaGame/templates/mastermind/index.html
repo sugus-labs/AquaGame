@@ -52,21 +52,8 @@
     <div id="left_span" class="col-lg-5 col-offset-1">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            Arrastra aqui las bolas
-            <div class="btn-group pull-right">
-              <button type="button" class="btn btn-default">Acciones</button>
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Corregir</a></li>
-                <li><a href="#">Ver un video</a></li>
-                <li><a href="#">Obtener una pista</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Borrar todo</a></li>
-              </ul>
-            </div>
+          <h3 class="panel-title">Drop the balls here
+            <button id="review_1" type="button" class="btn btn-default pull-right">Review</button>
           </h3>
         </div>
         <div id="droppable" class="panel-footer ui-widget-header">
@@ -118,18 +105,18 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">
-            Arrastra aqui las bolas
+            Drop the balls here
             <div class="btn-group pull-right">
-              <button type="button" class="btn btn-default">Acciones</button>
+              <button type="button" class="btn btn-default">Actions</button>
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="#">Corregir</a></li>
-                <li><a href="#">Ver un video</a></li>
-                <li><a href="#">Obtener una pista</a></li>
+                <li><a id="review" href="#">Review</a></li>
+                <li><a id="watch" href="#">Watch a video</a></li>
+                <li><a id="" href="#"></a>Get a clue</li>
                 <li class="divider"></li>
-                <li><a href="#">Borrar todo</a></li>
+                <li><a href="#">Erase all</a></li>
               </ul>
             </div>
           </h3>
@@ -182,18 +169,18 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">
-            Arrastra aqui las bolas
+            Drop the balls here
             <div class="btn-group pull-right">
-              <button type="button" class="btn btn-default">Acciones</button>
+              <button type="button" class="btn btn-default">Actions</button>
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="#">Corregir</a></li>
-                <li><a href="#">Ver un video</a></li>
-                <li><a href="#">Obtener una pista</a></li>
+                <li><a id="review" href="#">Review</a></li>
+                <li><a id="watch" href="#">Watch a video</a></li>
+                <li><a id="" href="#"></a>Get a clue</li>
                 <li class="divider"></li>
-                <li><a href="#">Borrar todo</a></li>
+                <li><a href="#">Erase all</a></li>
               </ul>
             </div>
           </h3>
@@ -255,6 +242,12 @@
       }
     });
   });
+</script>
+
+<script>
+$("#review_1").click(function() {
+  alert("HEY YOU");
+});
 </script>
 
 // <script type="text/javascript">
