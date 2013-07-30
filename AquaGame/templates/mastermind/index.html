@@ -5,37 +5,39 @@
 {% block content %} 
 
   {% load staticfiles %}
+  <body>
 
   <style>
   #droppable { height: 150px; }
   .ball_properties { position: relative; z-index: 99; }
   </style>
 
-  <div id="right_span" class="row-fluid">
+  <div id="right_span_master" class="row-fluid">
 
-    <div id="right_span" class="col-12 col-sm-12 col-lg-4 col-offset-1 panel panel-primary">
+    <div id="right_span_main" class="col-12 col-sm-12 col-lg-4 col-offset-1 panel panel-info" tabindex="0">
       <div class="panel-heading">
+        <button id="new_game" type="button" class="btn btn-default pull-right">New game</button>
         <h3 class="panel-title">Balls</h3>
       </div>
-      <div id="ball_blue_span" class="col-3 col-sm-3 col-lg-3">
+      <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_blue" class="ui-widget-content">
           <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
           <p><center><b><span class="ball_properties">AGUA</span></b></center></p>
         </div>
       </div>
-      <div id="ball_purple_span" class="col-3 col-sm-3 col-lg-3">
+      <div id="span_ball_purple" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_purple" class="ui-widget-content">
           <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="ball_properties"/></center></p>
           <p><center><b><span class="ball_properties">ALCOHOL</span></b></center></p>
         </div>
       </div>
-      <div id="ball_yellow_span" class="col-3 col-sm-3 col-lg-3">
+      <div id="span_ball_yellow" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_yellow" class="ui-widget-content">
           <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="ball_properties"/></center></p>
           <p><center><b><span class="ball_properties">GASOLINA</span></b></center></p>
         </div>
       </div>
-      <div id="ball_white_span" class="col-3 col-sm-3 col-lg-3">
+      <div id="span_ball_white" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_white" class="ui-widget-content">
           <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties"/></center></p>
           <p><center><b><span class="ball_properties">AIRE</span></b></center></p>
@@ -43,25 +45,25 @@
       </div>
     </div>
    
-    <div id="left_span" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
+    <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
       <div class="panel-heading">
         <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
         <!--<p id="debug_text_0"><center><span>Texto para debug</span></center></p>-->
       </div>
       <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
         <!--<p id="debug_text_1"><center><span>Texto para debug</span></center></p>-->
       </div>
       <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
         <!--<p id="debug_text_2"><center><span>Texto para debug</span></center></p>-->
       </div>                  
       <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center><p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center><p>
         <!--<p id="debug_text_3"><center><span>Texto para debug</span></center></p>-->
       </div>
       
@@ -72,9 +74,9 @@
   
   </div>
 
-  <div id="right_span" class="row">
+  <div id="right_span_master" class="row">
 
-   <div id="left_span" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-primary">
+   <div id="left_span_1" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
       <div class="panel-heading">
         <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
         <h3 class="panel-title">Drop the balls here</h3> 
@@ -105,7 +107,7 @@
 
   <div id="right_span" class="row">
 
-   <div id="left_span" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-primary">
+   <div id="left_span_2" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
       <div class="panel-heading">
         <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
         <h3 class="panel-title">Drop the balls here</h3> 
@@ -150,7 +152,7 @@ $(function() {
   $('div[id^=droppable_]').droppable({
     drop: function(event, ui) {
       //$(this).addClass("well well-small").find("span").html(ui.draggable.attr('id'));
-      $(this).find("img").attr('src', '{% static "img/ball_shell_hover_question.png" %}').addClass("ball_properties"); 
+      //$(this).find("img").attr('src', '{% static "img/ball_shell_hover_question.png" %}').addClass("ball_properties"); 
       //response = $(this).find("span").html(ui.draggable.attr('id'));
       ball_object = ui.draggable.attr('id');
       gap = $(this).attr('id');
@@ -166,13 +168,13 @@ $(function() {
 </script>
 
 <script>
-$("#review_1").click(function() {
-  
+//$("#new_game").click(function() {
+  //$('div[id^=ball_]').attr('src', '{% static "img/ball_shell_hover_success.png" %}');
   //debug_texts = $('p[id^=debug_text_]');
   //for (var i = 0; i < debug_texts.length; i++) {
   //              debug_texts[i].style.visibility = 'hidden';
   //}
-});
+//});
 </script>
 
 // <script type="text/javascript">
