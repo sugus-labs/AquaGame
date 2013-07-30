@@ -8,68 +8,66 @@
 
   <style>
   #droppable { height: 150px; }
-  .balls { position: relative; z-index: 99; }
+  .ball_properties { position: relative; z-index: 99; }
   </style>
 
   <div id="right_span" class="row-fluid">
 
-    <div id="right_span" class="col-12 col-sm-8 col-lg-4 panel panel-primary">
+    <div id="right_span" class="col-12 col-sm-12 col-lg-4 col-offset-1 panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Balls</h3>
       </div>
       <div id="ball_blue_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_blue" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="balls"/></center></p>
-          <p><center><b>AGUA</b></center></p>
+          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
+          <p><center><b><span class="ball_properties">AGUA</span></b></center></p>
         </div>
       </div>
       <div id="ball_purple_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_purple" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="balls"/></center></p>
-          <p><center><b>ALCOHOL</b></center></p>
+          <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="ball_properties"/></center></p>
+          <p><center><b><span class="ball_properties">ALCOHOL</span></b></center></p>
         </div>
       </div>
       <div id="ball_yellow_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_yellow" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="balls"/></center></p>
-          <p><center><b>GASOLINA</b></center></p>
+          <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="ball_properties"/></center></p>
+          <p><center><b><span class="ball_properties">GASOLINA</span></b></center></p>
         </div>
       </div>
       <div id="ball_white_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_white" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="balls"/></center></p>
-          <p><center><b>AIRE</b></center></p>
+          <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties"/></center></p>
+          <p><center><b><span class="ball_properties">AIRE</span></b></center></p>
         </div>
       </div>
     </div>
    
-    <div id="left_span" class="col-12 col-sm-8 col-lg-6 panel panel-primary">
+    <div id="left_span" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
       <div class="panel-heading">
         <button id="review_1" type="button" class="btn btn-default pull-right">Review</button>
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
-      <div id="droppable_span" class="panel-footer ui-widget-header">
-        <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-          <p id="debug_text_1">Texto para debug</p>
-        </div>
-        <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-          <p id="debug_text_2">Texto para debug</p>
-        </div>
-        <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-          <p id="debug_text_3">Texto para debug</p>
-        </div>                  
-        <div id="droppable_4" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-          <p id="debug_text_4">Texto para debug</p>
-        </div>
-        <div id="test_button" class="ui-widget-content">
-          <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-          <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-        </div>
+      <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p id="debug_text_1"><center><span>Texto para debug</span></center></p>
       </div>
+      <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p id="debug_text_2"><center><span>Texto para debug</span></center></p>
+      </div>
+      <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
+        <p id="debug_text_3"><center><span>Texto para debug</span></center></p>
+      </div>                  
+      <div id="droppable_4" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center><p>
+        <p id="debug_text_4"><center><span>Texto para debug</span></center></p>
+      </div>
+      
+        <!--<button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+        <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>-->
+
     </div>
   
   </div>
@@ -213,13 +211,17 @@
                 });
     $('div[id^=droppable_]').droppable({
       drop: function(event, ui) {
-        $(this).addClass("ui-state-highlight").find("p").html(ui.draggable.attr('id'));
+        //$(this).addClass("well well-small").find("span").html(ui.draggable.attr('id'));
+        $(this).find("img").attr('src', '{% static "img/ball_shell_hover_question.png" %}').addClass("ball_properties");
+        $(this).find("span").html(ui.draggable.attr('id'));
       }
     });
   });
 </script>
 
 <script>
+var ballsArray = new Array("ball_white", "ball_yellow", "ball_blue", "ball_purple" );
+
 $("#review_1").click(function() {
   debug_texts = $('p[id^=debug_text_]');
   for (var i = 0; i < debug_texts.length; i++) {
