@@ -136,9 +136,29 @@
 
   </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Instrucciones del RETO!</h4>
+          </div>
+          <div class="modal-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <!--<div class="modal-footer">
+            <a href="#" class="btn btn-default">Close</a>
+            <a href="#" class="btn btn-primary">Save changes</a>
+          </div>-->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
 <script>
 ballsArray = [ "ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
+numbersArray = [];
 
 $(function() {
   $('div[id^=ball_]').draggable({
@@ -149,6 +169,7 @@ $(function() {
       return !event;
     }
   });
+  $('div[id^=ball_]').draggable({revert:true});
   $('div[id^=droppable_]').droppable({
     drop: function(event, ui) {
       //$(this).addClass("well well-small").find("span").html(ui.draggable.attr('id'));
@@ -157,6 +178,7 @@ $(function() {
       ball_object = ui.draggable.attr('id');
       gap = $(this).attr('id');
       number = gap.charAt(10)
+      alert(number)
       if (ballsArray[number] == ball_object) {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_success.png" %}').addClass("ball_properties");
       } else {
@@ -177,7 +199,7 @@ $(function() {
 //});
 </script>
 
-// <script type="text/javascript">
+<script type="text/javascript">
 
 //    var myImageElement = document.getElementById('main_image');
 //    setInterval(function() {
@@ -185,7 +207,10 @@ $(function() {
 //     myImageElement.src = 'http://www.weblab.deusto.es/webcam/proxied.py/aquarium1?rand=' + Math.random();
 //    }, 600);
 
-// </script>
+</script>
 
-  
+<script type="text/javascript"> 
+    $('#myModal').modal('show');
+</script>
+
 {% endblock %}
