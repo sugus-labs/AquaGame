@@ -63,25 +63,25 @@
                 <th>
                   <div id="droppable_1" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p>Texto para debug</p>
+                    <p id="debug_text_1">Texto para debug</p>
                   </div>
                 </th>
                 <th>
                   <div id="droppable_2" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p>Texto para debug</p>
+                    <p id="debug_text_2">Texto para debug</p>
                   </div>
                 </th>
                 <th>
                   <div id="droppable_3" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p>Texto para debug</p>
+                    <p id="debug_text_3">Texto para debug</p>
                   </div>
                 </th>
                 <th>
                   <div id="droppable_4" class="ui-widget-content">
                     <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p>Texto para debug</p>
+                    <p id="debug_text_4">Texto para debug</p>
                   </div>
                 </th>
                 <th>
@@ -246,7 +246,10 @@
 
 <script>
 $("#review_1").click(function() {
-  alert("HEY YOU");
+  debug_texts = $('p[id^=debug_text_]');
+  for (var i = 0; i < debug_texts.length; i++) {
+                debug_texts[i].style.visibility = 'hidden';
+  }
 });
 </script>
 
