@@ -47,7 +47,7 @@
    
     <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
       <div class="panel-heading">
-        <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
+        <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
@@ -78,24 +78,25 @@
 
    <div id="left_span_1" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
       <div class="panel-heading">
-        <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
-        <h3 class="panel-title">Drop the balls here</h3> 
+        <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
+        <!--<h3 class="panel-title  disabled">Drop the balls here</h3>-->
+        <h3 class="panel-title  disabled"></h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_0"><center><span>Texto para debug</span></center></p>-->
+        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
+        <p><center><img src=""/></center></p>
       </div>
       <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_1"><center><span>Texto para debug</span></center></p>-->
+        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
+        <p><center><img src=""/></center></p>
       </div>
       <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_2"><center><span>Texto para debug</span></center></p>-->
+        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
+        <p><center><img src=""/></center></p>
       </div>                  
       <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center><p>
-        <!--<p id="debug_text_3"><center><span>Texto para debug</span></center></p>-->
+        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
+        <p><center><img src=""/></center></p>
       </div>
       
         <!--<button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
@@ -158,7 +159,7 @@
 
 <script>
 ballsArray = [ "ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
-numbersArray = [];
+counter = 0;
 
 $(function() {
   $('div[id^=ball_]').draggable({
@@ -169,7 +170,7 @@ $(function() {
       return !event;
     }
   });
-  $('div[id^=ball_]').draggable({revert:true});
+  
   $('div[id^=droppable_]').droppable({
     drop: function(event, ui) {
       //$(this).addClass("well well-small").find("span").html(ui.draggable.attr('id'));
@@ -177,12 +178,22 @@ $(function() {
       //response = $(this).find("span").html(ui.draggable.attr('id'));
       ball_object = ui.draggable.attr('id');
       gap = $(this).attr('id');
-      number = gap.charAt(10)
-      alert(number)
+      number = gap.charAt(10);
+      counter = counter + parseInt(number);
       if (ballsArray[number] == ball_object) {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_success.png" %}').addClass("ball_properties");
       } else {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties");
+      }
+      if (counter == 6){
+        $('div[id^=droppable_]').droppable("destroy");
+        $('div[id^=ball_0]').draggable({revert:true});
+        //alert(ball_items);
+        //for (var i = 0; i < ball_items.length; i++) {
+        //  alert(ball_items[i]);
+        //  ball_items[i].draggable({revert:true});
+        //}
+        counter = 0;
       }
     }
   });
