@@ -8,76 +8,66 @@
 
   <style>
   #droppable { height: 150px; }
+  .balls { position: relative; z-index: 99; }
   </style>
 
-  <div id="right_span" class="row">
-    <div id="right_span" class="col-lg-4 col-offset-1 alert alert-info">
-      <div id="ball_blue_span" class="col-lg-3">
+  <div id="right_span" class="row-fluid">
+
+    <div id="right_span" class="col-12 col-sm-8 col-lg-4 panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Balls</h3>
+      </div>
+      <div id="ball_blue_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_blue" class="ui-widget-content">
-          <center><img src="{% static "img/ball_blue.png" %}" width= "100%" style="position: relative; z-index: 99;"/></center>
+          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="balls"/></center></p>
+          <p><center><b>AGUA</b></center></p>
         </div>
       </div>
-      <div id="ball_purple_span" class="col-lg-3">
+      <div id="ball_purple_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_purple" class="ui-widget-content">
-          <center><img src="{% static "img/ball_purple.png" %}" width= "100%" style="position: relative; z-index: 99;"/></center>
+          <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="balls"/></center></p>
+          <p><center><b>ALCOHOL</b></center></p>
         </div>
       </div>
-      <div id="ball_yellow_span" class="col-lg-3">
+      <div id="ball_yellow_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_yellow" class="ui-widget-content">
-          <center><img src="{% static "img/ball_yellow.png" %}" width= "100%" style="position: relative; z-index: 99;"/></center>
+          <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="balls"/></center></p>
+          <p><center><b>GASOLINA</b></center></p>
         </div>
       </div>
-      <div id="ball_white_span" class="col-lg-3">
+      <div id="ball_white_span" class="col-3 col-sm-3 col-lg-3">
         <div id="ball_white" class="ui-widget-content">
-          <center><img src="{% static "img/ball_white.png" %}" width= "100%" style="position: relative; z-index: 99;"/></center>
+          <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="balls"/></center></p>
+          <p><center><b>AIRE</b></center></p>
         </div>
       </div>
     </div>
    
-    <div id="left_span" class="col-lg-5 col-offset-1">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Drop the balls here
-            <button id="review_1" type="button" class="btn btn-default pull-right">Review</button>
-          </h3>
+    <div id="left_span" class="col-12 col-sm-8 col-lg-6 panel panel-primary">
+      <div class="panel-heading">
+        <button id="review_1" type="button" class="btn btn-default pull-right">Review</button>
+        <h3 class="panel-title">Drop the balls here</h3> 
+      </div>
+      <div id="droppable_span" class="panel-footer ui-widget-header">
+        <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+          <p id="debug_text_1">Texto para debug</p>
         </div>
-        <div id="droppable" class="panel-footer ui-widget-header">
-          <table class="table">
-            <thead>  
-              <tr>  
-                <th>
-                  <div id="droppable_1" class="ui-widget-content">
-                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p id="debug_text_1">Texto para debug</p>
-                  </div>
-                </th>
-                <th>
-                  <div id="droppable_2" class="ui-widget-content">
-                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p id="debug_text_2">Texto para debug</p>
-                  </div>
-                </th>
-                <th>
-                  <div id="droppable_3" class="ui-widget-content">
-                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p id="debug_text_3">Texto para debug</p>
-                  </div>
-                </th>
-                <th>
-                  <div id="droppable_4" class="ui-widget-content">
-                    <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
-                    <p id="debug_text_4">Texto para debug</p>
-                  </div>
-                </th>
-                <th>
-                  <div id="test_button" class="ui-widget-content">
-                    <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-                    <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-          </table>
+        <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+          <p id="debug_text_2">Texto para debug</p>
+        </div>
+        <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+          <p id="debug_text_3">Texto para debug</p>
+        </div>                  
+        <div id="droppable_4" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <center><img src="{% static "img/ball_shell.png" %}" width= "110px" height="110px"/></center>
+          <p id="debug_text_4">Texto para debug</p>
+        </div>
+        <div id="test_button" class="ui-widget-content">
+          <button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
+          <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
         </div>
       </div>
     </div>
