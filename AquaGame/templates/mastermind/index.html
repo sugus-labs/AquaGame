@@ -19,7 +19,13 @@
         <button id="new_game" type="button" class="btn btn-default pull-right">New game</button>
         <h3 class="panel-title">Balls</h3>
       </div>
-      <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3">
+      <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3" style="position: relative; z-index: 70;">
+        <div id="ball_blue" class="ui-widget-content">
+          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
+          <p><center><b><span class="ball_properties">AGUA</span></b></center></p>
+        </div>
+      </div>
+      <div id="span_ball_blue_hidden" class="col-3 col-sm-3 col-lg-3 hidden">
         <div id="ball_blue" class="ui-widget-content">
           <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
           <p><center><b><span class="ball_properties">AGUA</span></b></center></p>
@@ -47,56 +53,65 @@
    
     <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
       <div class="panel-heading">
-        <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_0"><center><span>Texto para debug</span></center></p>-->
       </div>
       <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_1"><center><span>Texto para debug</span></center></p>-->
       </div>
       <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_2"><center><span>Texto para debug</span></center></p>-->
       </div>                  
       <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center><p>
-        <!--<p id="debug_text_3"><center><span>Texto para debug</span></center></p>-->
       </div>
       
-        <!--<button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-        <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>-->
-
     </div>
   
   </div>
 
-  <div id="right_span_master" class="row">
+  <div id="row_2" class="row">
 
    <div id="left_span_1" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
       <div class="panel-heading">
         <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
-        <!--<h3 class="panel-title  disabled">Drop the balls here</h3>-->
-        <h3 class="panel-title  disabled"></h3> 
+        <h3 class="panel-title">Drop the balls here</h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
-        <p><center><img src=""/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
-        <p><center><img src=""/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
-        <p><center><img src=""/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>                  
       <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <!--<p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>-->
-        <p><center><img src=""/></center></p>
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="row_3" class="row">
+
+   <div id="left_span_2" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Drop the balls here</h3> 
+      </div>
+      <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+      </div>
+      <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+      </div>
+      <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+      </div>                  
+      <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       
         <!--<button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
@@ -106,33 +121,25 @@
 
   </div>
 
-  <div id="right_span" class="row">
+  <div id="row_4" class="row">
 
    <div id="left_span_2" class="col-12 col-sm-12 col-lg-5 col-offset-6 panel panel-info">
       <div class="panel-heading">
-        <button id="review_0" type="button" class="btn btn-default pull-right">Review</button>
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
       <div id="droppable_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_0"><center><span>Texto para debug</span></center></p>-->
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       <div id="droppable_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_1"><center><span>Texto para debug</span></center></p>-->
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       <div id="droppable_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center></p>
-        <!--<p id="debug_text_2"><center><span>Texto para debug</span></center></p>-->
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>                  
       <div id="droppable_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell.png" %}" width= "100%"/></center><p>
-        <!--<p id="debug_text_3"><center><span>Texto para debug</span></center></p>-->
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
       </div>
       
-        <!--<button type="button" class="btn btn-success btn-block"><b>Aciertos:</b>&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>
-        <button type="button" class="btn btn-danger btn-block"><b>Errores:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-big-custom">0</span>&nbsp;</button>-->
-
     </div>
 
   </div>
@@ -186,13 +193,8 @@ $(function() {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties");
       }
       if (counter == 6){
-        $('div[id^=droppable_]').droppable("destroy");
-        $('div[id^=ball_0]').draggable({revert:true});
-        //alert(ball_items);
-        //for (var i = 0; i < ball_items.length; i++) {
-        //  alert(ball_items[i]);
-        //  ball_items[i].draggable({revert:true});
-        //}
+        $('div[id=left_span_0]').removeClass('panel-primary').addClass('panel-info');
+        $('div[id=left_span_1]').removeClass('panel-info').addClass('panel-primary');
         counter = 0;
       }
     }
