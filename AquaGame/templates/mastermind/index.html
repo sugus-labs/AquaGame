@@ -230,7 +230,7 @@ $(function() {
     drop: function(event, ui) {
       dropped = $(this);
       liquid = ui.draggable.find('span').clone();
-      dropped.find('div').html(liquid);
+      dropped.find('div').html('<b>' + liquid.text() + '</b>');
       dropped.droppable('disable');
       ball_object = ui.draggable.attr('id');
       gap = $(this).attr('id');
