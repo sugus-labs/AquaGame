@@ -181,7 +181,6 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> <!-- DELETE THIS OPTION -->
             <h4 class="modal-title">Your time was over!</h4>
           </div>
           <div class="modal-body">
@@ -195,11 +194,29 @@
       </div><!-- end modal-dialog -->
     </div><!-- end time_over_modal -->
 
+    <!-- you win Modal-->
+    <div class="modal fade" id="you_win_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">You win!</h4>
+          </div>
+          <div class="modal-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
+            <a href="" class="btn btn-success">Play another time</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end you_win_modal -->
+
 </div><!-- end left_colum -->
 </div><!-- end master_row -->
 
 <script>
-ballsArray = [ "ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
+ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
 panel_counter = 0;
 sum_balls_counter = 0;
 num_successes = 0;
@@ -226,14 +243,18 @@ $(function() {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties");
       }
       if (sum_balls_counter == 10){
-        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
-        $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
-        panel_counter = panel_counter + 1;
-        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
-        $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
-        $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
-        sum_balls_counter = 0;
-        num_successes = 0;
+        if (parseInt(sum_balls_counter) < 4) {
+          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
+          $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
+          panel_counter = panel_counter + 1;
+          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
+          $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
+          $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
+          sum_balls_counter = 0;
+          num_successes = 0;
+        } else {
+          $('#you_win_modal').modal('show');
+        }
       }
     }
   });
