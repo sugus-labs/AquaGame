@@ -3964,18 +3964,18 @@ a.thumbnail:focus {
   border-radius: 10px;
 }
 
-.badge-big-custom {
+.badge-big-success {
   display: inline-block;
   min-width: 10px;
   padding: 4px 8px;
   font-size: 18px;
   font-weight: bold;
   line-height: 1;
-  color: #000000;
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #ffffff;
+  background-color: #5cb85c;
   border-radius: 4px;
 }
 
