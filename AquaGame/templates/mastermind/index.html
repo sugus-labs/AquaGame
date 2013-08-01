@@ -50,13 +50,24 @@
         </div>
       </div>
       <p>&nbsp;</p>
-      <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Important!</strong> This is your selected image.
-      </div>
+      <p class="alert alert-info">
+        <strong>Important!</strong> This is your selected image.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary">Select another image</button>
+      </p>
       <p><center><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties"/></center></p>
     </div>
-   
+
+    <div class="col-12 col-sm-12 col-lg-6 col-offset-1">
+      <div class="col-10 col-sm-10 col-lg-10">
+        <div class="progress progress-striped">
+          <div class="progress-bar progress-bar-success" id="progress_clock" style="width: 60%;"></div>
+        </div>
+      </div>
+      <div class="col-2 col-sm-2 col-lg-2">
+        <div><span id="timer" class="badge badge-big-success"></span></div>
+      </div>
+    </div>
+
     <div id="left_span_0" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
       <div class="panel-heading">
         <h3 class="panel-title">Drop the balls here</h3> 
@@ -215,13 +226,33 @@ $(function() {
 </script>
 
 <script>
-//$("#new_game").click(function() {
-  //$('div[id^=ball_]').attr('src', '{% static "img/ball_shell_hover_success.png" %}');
-  //debug_texts = $('p[id^=debug_text_]');
-  //for (var i = 0; i < debug_texts.length; i++) {
-  //              debug_texts[i].style.visibility = 'hidden';
-  //}
-//});
+var total_minutes = 4;
+var total_real = parseInt(total_minutes) - 1;
+var seconds_in_minute= 59;
+var progress_bar_total = parseInt(total_minutes)*60;
+step = parseFloat(progress_bar_total / 100)
+progress_bar_actual = 0;
+
+function pretty_time_string(num) {
+    return ( num < 10 ? "0" : "" ) + num;
+}
+
+setInterval(function() {
+  progress_bar_actual = parseFloat(parseFloat(100) - parseFloat((parseFloat(total_real)*60 + parseFloat(seconds_in_minute)) / parseFloat(step))) 
+  //alert(progress_bar_actual)
+  $('div[id=progress_clock]').css("width", progress_bar_actual + "%")//; = ;
+  seconds_in_minute = pretty_time_string(seconds_in_minute)
+  $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
+  seconds_in_minute = parseInt(seconds_in_minute) - 1
+  if (seconds_in_minute < 0) {
+    if (seconds_in_minute != -1 && total_real != 0) {
+      total_real = parseInt(total_real) - 1
+      seconds_in_minute = 59;
+    //} else {
+      //alert("FIN")
+    }
+  }
+}, 1000);
 </script>
 
 <script type="text/javascript">
