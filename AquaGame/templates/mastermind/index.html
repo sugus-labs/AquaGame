@@ -14,7 +14,7 @@
 
   <div id="span_master row-fluid">
     <div id="right_column" class="col-lg-6">
-      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
         <div class="panel-heading">
           <h3 class="panel-title">Select the balls and drag to their positions</h3>
         </div>
@@ -44,7 +44,7 @@
         </div>
       </div><!-- end right_span_main -->
 
-      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
         </div>
@@ -163,15 +163,14 @@
     <div class="modal fade" id="initial_modal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> <!-- DELETE THIS OPTION --> 
+          <div class="modal-header"> 
             <h4 class="modal-title">Instructions to complete the game!</h4>
           </div>
           <div class="modal-body">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary">Close and play</a>
+            <a href="#" class="btn btn-primary" data-dismiss="modal">Close and play</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -189,8 +188,8 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-danger">Exit and close</a>
-            <a href="#" class="btn btn-success">New game</a>
+            <a href="#" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
+            <a href="" class="btn btn-success">New game</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -242,9 +241,11 @@ $(function() {
 </script>
 
 <script>
-var total_minutes = 1;
+// DEBUG - var total_minutes = 1;
+var total_minutes = 4;
 var total_real = parseInt(total_minutes) - 1;
-var seconds_in_minute= 2;
+// DEBUG - var seconds_in_minute= 2;
+var seconds_in_minute= 59;
 var progress_bar_total = parseInt(total_minutes)*60;
 step = parseFloat(progress_bar_total / 100)
 progress_bar_actual = 0;
