@@ -12,135 +12,132 @@
   .ball_properties { position: relative; z-index: 99; }
   </style>
 
-  <div id="right_span_master">
+  <div id="span_master row-fluid">
+    <div id="right_column" class="col-lg-6">
+      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Select the balls and drag to their positions</h3>
+        </div>
+        <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3" style="position: relative; z-index: 70;">
+          <div id="ball_blue" class="ui-widget-content">
+            <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
+            <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
+          </div>
+        </div>
+        <div id="span_ball_purple" class="col-3 col-sm-3 col-lg-3">
+          <div id="ball_purple" class="ui-widget-content">
+            <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="ball_properties"/></center></p>
+            <p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>
+          </div>
+        </div>
+        <div id="span_ball_yellow" class="col-3 col-sm-3 col-lg-3">
+          <div id="ball_yellow" class="ui-widget-content">
+            <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="ball_properties"/></center></p>
+            <p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>
+          </div>
+        </div>
+        <div id="span_ball_white" class="col-3 col-sm-3 col-lg-3">
+          <div id="ball_white" class="ui-widget-content">
+            <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties"/></center></p>
+            <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
+          </div>
+        </div>
+      </div><!-- end right_span_main -->
 
-    <div id="right_span_main" class="col-12 col-sm-12 col-lg-5 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
-      <div class="panel-heading">
-        <!--<button id="new_game" type="button" class="btn btn-default pull-right">New game</button>-->
-        <h3 class="panel-title">Select the balls and drag to their positions</h3>
-      </div>
-      <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3" style="position: relative; z-index: 70;">
-        <div id="ball_blue" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
-          <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
+      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Selected image</h3>
         </div>
-      </div>
-      <div id="span_ball_blue_hidden" class="col-3 col-sm-3 col-lg-3 hidden">
-        <div id="ball_blue" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties"/></center></p>
-          <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
-        </div>
-      </div>
-      <div id="span_ball_purple" class="col-3 col-sm-3 col-lg-3">
-        <div id="ball_purple" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="ball_properties"/></center></p>
-          <p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>
-        </div>
-      </div>
-      <div id="span_ball_yellow" class="col-3 col-sm-3 col-lg-3">
-        <div id="ball_yellow" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="ball_properties"/></center></p>
-          <p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>
-        </div>
-      </div>
-      <div id="span_ball_white" class="col-3 col-sm-3 col-lg-3">
-        <div id="ball_white" class="ui-widget-content">
-          <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties"/></center></p>
-          <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
-        </div>
-      </div>
-      <p>&nbsp;</p>
-      <p class="alert alert-info">
-        <strong>Important!</strong> This is your selected image.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-primary">Select another image</button>
-      </p>
-      <p><center><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties"/></center></p>
-    </div>
+        <center><img id="main_image" src="{% static "img/example_image.jpg" %}" width= "100%"/></center>
+        <p><center><button id="select_image_button" type="button" class="btn btn-primary">Select another image</button></center></p>
+      </div><!-- end right_span_image -->
 
-    <div class="col-12 col-sm-12 col-lg-6 col-offset-1">
-      <div class="col-10 col-sm-10 col-lg-10">
-        <div class="progress progress-striped">
-          <div class="progress-bar progress-bar-success" id="progress_clock" style="width: 60%;"></div>
-        </div>
-      </div>
-      <div class="col-2 col-sm-2 col-lg-2">
-        <div><span id="timer" class="badge badge-big-success"></span></div>
-      </div>
-    </div>
+    </div><!-- end right_column -->
 
-    <div id="left_span_0" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
-      <div class="panel-heading">
-        <h3 class="panel-title">Drop the balls here</h3> 
-      </div>
-      <div id="droppable_0_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <p><center><div class="well well-small">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_0_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <p><center><div class="well well-small">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_0_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
-        <p><center><div class="well well-small">&nbsp;</div></center></p>
-      </div>                  
-      <div id="droppable_0_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center><p>
+    <div id="left_column" class="col-lg-6">
+
+      <div id="timer_panel" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Time remaining</h3> 
+        </div>
+        <div id="timer_text" class="col-10 col-sm-10 col-lg-10">
+          <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-success" id="progress_clock" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="col-2 col-sm-2 col-lg-2">
+          <div><span id="timer" class="badge badge-big-success"></span></div>
+        </div>
+      </div><!-- end timer_panel -->
+
+      <div id="left_span_0" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_0_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
           <p><center><div class="well well-small">&nbsp;</div></center></p>
-      </div>
-      
-    </div>
+        </div>
+        <div id="droppable_0_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
+          <p><center><div class="well well-small">&nbsp;</div></center></p>
+        </div>
+        <div id="droppable_0_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center></p>
+          <p><center><div class="well well-small">&nbsp;</div></center></p>
+        </div>                  
+        <div id="droppable_0_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%"/></center><p>
+          <p><center><div class="well well-small">&nbsp;</div></center></p>
+        </div>
+      </div><!-- end left_span_0 -->
   
-  </div>
+     <div id="left_span_1" class="col-12 col-sm-12 col-lg-12 panel panel-info">
+        <div class="panel-heading">
+          <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
+          <h3 class="panel-title hidden">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_1_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+        <div id="droppable_1_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+        <div id="droppable_1_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>                  
+        <div id="droppable_1_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+      </div><!-- end left_span_1 -->
 
+     <div id="left_span_2" class="col-12 col-sm-12 col-lg-12 panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title hidden">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_2_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+        <div id="droppable_2_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+        <div id="droppable_2_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>                  
+        <div id="droppable_2_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
+          <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
+        </div>
+      </div><!-- end left_span_2 -->
 
-   <div id="left_span_1" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
-      <div class="panel-heading">
-        <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
-        <h3 class="panel-title hidden">Drop the balls here</h3> 
-      </div>
-      <div id="droppable_1_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_1_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_1_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>                  
-      <div id="droppable_1_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-    </div>
-
-   <div id="left_span_2" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title hidden">Drop the balls here</h3> 
-      </div>
-      <div id="droppable_2_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_2_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-      <div id="droppable_2_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>                  
-      <div id="droppable_2_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
-        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
-        <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
-      </div>
-      
-    </div>
-
-   <div id="left_span_3" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
+   <div id="left_span_3" class="col-12 col-sm-12 col-lg-12 panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title hidden">Drop the balls here</h3> 
       </div>
@@ -160,28 +157,47 @@
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden'/></center></p>
         <p><center><div class="well well-small hidden">&nbsp;</div></center></p>
       </div>
-      
-    </div>
+    </div><!-- end left_span_3 -->
 
     <!-- Initial Modal-->
     <div class="modal fade" id="initial_modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Instrucciones del RETO!</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> <!-- DELETE THIS OPTION --> 
+            <h4 class="modal-title">Instructions to complete the game!</h4>
           </div>
           <div class="modal-body">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
-          <!--<div class="modal-footer">
-            <a href="#" class="btn btn-default">Close</a>
-            <a href="#" class="btn btn-primary">Save changes</a>
-          </div>-->
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary">Close and play</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end initial_modal -->
 
+    <!-- Time over Modal-->
+    <div class="modal fade" id="time_over_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> <!-- DELETE THIS OPTION -->
+            <h4 class="modal-title">Your time was over!</h4>
+          </div>
+          <div class="modal-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-danger">Exit and close</a>
+            <a href="#" class="btn btn-success">New game</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end time_over_modal -->
+
+</div><!-- end left_colum -->
+</div><!-- end master_row -->
 
 <script>
 ballsArray = [ "ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
@@ -226,9 +242,9 @@ $(function() {
 </script>
 
 <script>
-var total_minutes = 4;
+var total_minutes = 1;
 var total_real = parseInt(total_minutes) - 1;
-var seconds_in_minute= 59;
+var seconds_in_minute= 2;
 var progress_bar_total = parseInt(total_minutes)*60;
 step = parseFloat(progress_bar_total / 100)
 progress_bar_actual = 0;
@@ -245,11 +261,12 @@ setInterval(function() {
   $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
   seconds_in_minute = parseInt(seconds_in_minute) - 1
   if (seconds_in_minute < 0) {
-    if (seconds_in_minute != -1 && total_real != 0) {
+    if (total_real != 0) {
       total_real = parseInt(total_real) - 1
       seconds_in_minute = 59;
-    //} else {
-      //alert("FIN")
+    } else {
+      $('div[id=timer_panel]').remove()
+      $('#time_over_modal').modal('show');
     }
   }
 }, 1000);
