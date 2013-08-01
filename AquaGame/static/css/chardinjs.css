@@ -38,13 +38,6 @@
   -ms-transition: opacity 0.1s ease-out;
   -o-transition: opacity 0.1s ease-out;
   transition: opacity 0.1s ease-out;
-  display: block;
-  background-color: #000;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  opacity: 1;
   max-width: 200px; }
   .chardinjs-tooltip.chardinjs-left {
     margin-left: -135px;
@@ -83,7 +76,7 @@
 
 .chardinjs-show-element {
   z-index: 9999999;
-  opacity: 0.5; }
+  opacity: 0.8; }
 
 .chardinjs-relative-position {
   position: relative; }

@@ -12,9 +12,10 @@
   .ball_properties { position: relative; z-index: 99; }
   </style>
 
+
   <div id="right_span_master" class="row-fluid">
 
-    <div id="right_span_main" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info" tabindex="0">
+    <div id="right_span_main" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
       <div class="panel-heading">
         <!--<button id="new_game" type="button" class="btn btn-default pull-right">New game</button>-->
         <h3 class="panel-title">Select the balls and drag to their positions</h3>
@@ -51,7 +52,7 @@
       </div>
     </div>
    
-    <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary">
+    <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
       <div class="panel-heading">
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
@@ -242,7 +243,8 @@ $(function() {
 <script type="text/javascript"> 
 $('#initial_modal').modal('show');
 $("#instructions_button").click(function() {
-  $('#initial_modal').modal('show');
+  //$('#initial_modal').modal('show');
+  $('body').chardinJs('start');
 });
 </script>
 
