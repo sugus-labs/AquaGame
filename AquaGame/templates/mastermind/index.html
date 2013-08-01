@@ -157,8 +157,8 @@
 
   </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal">
+    <!-- Initial Modal-->
+    <div class="modal fade" id="initial_modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -240,7 +240,10 @@ $(function() {
 </script>
 
 <script type="text/javascript"> 
-    //$('#myModal').modal('show');
+$('#initial_modal').modal('show');
+$("#instructions_button").click(function() {
+  $('#initial_modal').modal('show');
+});
 </script>
 
 {% endblock %}

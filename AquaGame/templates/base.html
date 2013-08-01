@@ -44,30 +44,8 @@
 
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          
-          <div class="nav-collapse collapse" >
-            <a class="navbar-brand" href="">AquaGame</a>
-            <div class="btn-group pull-right">
-              {% if user.is_authenticated %}
-              <div class="btn-group">
-                <button class="btn btn-info">{{ user.username }}</button>
-                <button class="btn dropdown-toggle btn-info" data-toggle="dropdown"><span class="caret"></span></button>
-                <ul class="dropdown-menu pull-right">
-                  <li><a href="\cuentas\perfil">Perfil</a></li>
-                  <li><a href="\cuentas\mi-CV">CV</a></li>
-                  <li class="divider"></li>
-                  <li><a href="\cuentas\logout">Salir</a></li>
-                </ul>
-              </div>
-              {% else %}
-              <!--<a class="btn btn-primary btn-danger" id="login" href="\cuentas\login">Logueate</a>-->
-            {% endif %}
-            </div>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+        <a href="#" class="navbar-brand">AquaGame</a>
+        <button type="button" id="instructions_button" class="btn btn-primary navbar-btn pull-right">Instructions</button>
     </div>
 
     <div>
