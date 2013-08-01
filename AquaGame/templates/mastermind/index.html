@@ -14,7 +14,7 @@
 
   <div id="right_span_master">
 
-    <div id="right_span_main" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+    <div id="right_span_main" class="col-12 col-sm-12 col-lg-5 panel panel-info" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
       <div class="panel-heading">
         <!--<button id="new_game" type="button" class="btn btn-default pull-right">New game</button>-->
         <h3 class="panel-title">Select the balls and drag to their positions</h3>
@@ -49,10 +49,15 @@
           <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
         </div>
       </div>
-      <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties"/></center></p>
+      <p>&nbsp;</p>
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Important!</strong> This is your selected image.
+      </div>
+      <p><center><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties"/></center></p>
     </div>
    
-    <div id="left_span_0" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
+    <div id="left_span_0" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
       <div class="panel-heading">
         <h3 class="panel-title">Drop the balls here</h3> 
       </div>
@@ -78,7 +83,7 @@
   </div>
 
 
-   <div id="left_span_1" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info">
+   <div id="left_span_1" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
       <div class="panel-heading">
         <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
         <h3 class="panel-title hidden">Drop the balls here</h3> 
@@ -101,7 +106,7 @@
       </div>
     </div>
 
-   <div id="left_span_2" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info">
+   <div id="left_span_2" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title hidden">Drop the balls here</h3> 
       </div>
@@ -124,7 +129,7 @@
       
     </div>
 
-   <div id="left_span_3" class="col-12 col-sm-12 col-lg-5 col-offset-1 panel panel-info">
+   <div id="left_span_3" class="col-12 col-sm-12 col-lg-6 col-offset-1 panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title hidden">Drop the balls here</h3> 
       </div>
