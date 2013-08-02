@@ -3368,7 +3368,8 @@ button.close {
 .modal-dialog {
   z-index: 1050;
   width: auto;
-  padding: 10px;
+  /*padding: 10px;*/
+  padding: 3px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -3407,8 +3408,11 @@ button.close {
 
 .modal-header {
   min-height: 16.428571429px;
-  padding: 15px;
+  /*padding: 15px;*/
+  padding: 6px;
   border-bottom: 1px solid #e5e5e5;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .modal-header .close {
@@ -3423,11 +3427,14 @@ button.close {
 .modal-body {
   position: relative;
   padding: 20px;
+  padding-top: 5px;
 }
 
 .modal-footer {
-  padding: 19px 20px 20px;
-  margin-top: 15px;
+  /*padding: 19px 20px 20px;*/
+  padding: 5px 20px 20px;
+  /*margin-top: 15px;*/
+  margin-top: 5px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
@@ -3469,9 +3476,12 @@ button.close {
   .modal-dialog {
     right: auto;
     left: 50%;
-    width: 600px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    /*width: 600px;*/
+    width: 700px;
+    /*padding-top: 30px;*/
+    padding-top: 5px;
+    /*padding-bottom: 30px;*/
+    padding-bottom: 5px;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);

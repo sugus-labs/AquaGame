@@ -164,10 +164,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header"> 
-            <h4 class="modal-title">Instructions to complete the game!</h4>
+            <h4 class="modal-title"><strong>Help Archimedes to reconquer Syracusa!</strong></h4>
           </div>
           <div class="modal-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <p><center><img src="{% static "img/syracuse_map_processed.jpg" %}" width= "100%"></center></p>
+            <p>You have only 4 mins to guess all the balls and expels the Romans from Syracuse!</p>
           </div>
           <div class="modal-footer">
             <a href="#" class="btn btn-primary" data-dismiss="modal">Close and play</a>
@@ -243,7 +244,7 @@ $(function() {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties");
       }
       if (sum_balls_counter == 10){
-        if (parseInt(sum_balls_counter) < 4) {
+        if (parseInt(num_successes) < 4) {
           $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
           $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
           panel_counter = panel_counter + 1;
