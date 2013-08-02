@@ -176,6 +176,42 @@
       </div><!-- end modal-dialog -->
     </div><!-- end initial_modal -->
 
+    <!-- modal_successes_0-->
+    <div class="modal fade" id="modal_successes_0">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Oh NO! You didn't guess any ball!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>All the cities of Syracuse are Conquered by the Romans. All of them!<br/> Try to guess the balls quickly to expel the Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%"></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end initial_modal -->
+
+    <!-- modal_successes_1-->
+    <div class="modal fade" id="modal_successes_1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Well! You guessed one ball!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>You conquered one of the four cities and kicked out the Romans!<br/> Try to guess more the next time to expel the more Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%"></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end initial_modal -->
+
     <!-- Time over Modal-->
     <div class="modal fade" id="time_over_modal">
       <div class="modal-dialog">
@@ -185,7 +221,7 @@
           </div>
           <div class="modal-body">
             <p>The Romans will be the owners of Syracuse!</p>
-            <p><center><img src="{% static "img/syracuse_map_processed.jpg" %}" width= "100%"></center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%"></center></p>
           </div>
           <div class="modal-footer">
             <a href="#" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
@@ -247,7 +283,8 @@ $(function() {
       if (sum_balls_counter == 10){
         if (parseInt(num_successes) < 4) {
           $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
-          $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
+          //$('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
+          $('#modal_successes_' + num_successes).modal('show');
           panel_counter = panel_counter + 1;
           $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
           $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
