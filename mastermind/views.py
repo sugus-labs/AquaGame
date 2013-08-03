@@ -5,3 +5,6 @@ def index(request):
 
 def basic_game(request):
     return render(request, 'mastermind/basic_game.html')
+
+def ranking(request):
+    return render(request, 'mastermind/ranking.html')
