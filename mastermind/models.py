@@ -6,7 +6,7 @@ class Ball(models.Model):
 		('Y', 'Yellow'), ('G', 'Green'),('O', 'Orange'), ('L', 'Blue'),
 		('I', 'Pink'), ('A', 'Gray'),
 		)
-	colour = models.CharField(max_length=1, choices=COLOR_OPTIONS, default='W',
+	colour = models.CharField(max_length=1, choices=COLOUR_OPTIONS, default='W',
 		help_text = "Select the colour of the ball from list.")
 	liquid_contained = models.CharField(max_length=100,
 		help_text = "Write the name of the liquid inside the ball.")
