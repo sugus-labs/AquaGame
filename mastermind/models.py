@@ -14,3 +14,9 @@ class Ball(models.Model):
 		help_text = "Write the density of the liquid inside the ball. The format must be '1.24' or '0.567'.")
 	date_refreshed = models.DateTimeField(auto_now=True)
 	date_created = models.DateTimeField(auto_now_add=True)
+
+class Participant(models.Model):
+	nick_name = models.CharField(max_length=100,
+		help_text = "Write your nick or name in this field.")
+	time_needed = models.CharField(max_length=10)
+	date_created = models.DateTimeField(auto_now_add=True)
