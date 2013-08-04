@@ -346,6 +346,7 @@ $(function() {
           $('h4[id=final_time_text]').html('You expel the Romans in ' + minutes + ' minutes and ' + seconds + ' seconds!');
           $('input[id=time_needed_field]').attr('value', minutes + ':' + seconds);
           clearInterval(timer);
+          $('div[id=timer_panel]').remove()
         }
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
         $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
@@ -388,6 +389,7 @@ timer = setInterval(function() {
       total_real = parseInt(total_real) - 1
       seconds_in_minute = 59;
     } else {
+      clearInterval(timer);
       $('div[id=timer_panel]').remove()
       $('#time_over_modal').modal('show');
     }
