@@ -339,8 +339,10 @@ $(function() {
         if (num_successes == 4){
           $('h4[id=final_time_text]').html('You expel the Romans in ' + total_real + ' minutes and ' + seconds_in_minute + ' seconds!');
           $('input[id=time_needed_field]').attr('value', total_real + ':' + seconds_in_minute);
+          clearInterval(timer);
         }
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
+        $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
         $('#modal_successes_' + num_successes).modal('show');
         panel_counter = panel_counter + 1;
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
@@ -368,7 +370,7 @@ function pretty_time_string(num) {
     return ( num < 10 ? "0" : "" ) + num;
 }
 
-setInterval(function() {
+timer = setInterval(function() {
   progress_bar_actual = parseFloat(parseFloat(100) - parseFloat((parseFloat(total_real)*60 + parseFloat(seconds_in_minute)) / parseFloat(step))) 
   //alert(progress_bar_actual)
   $('div[id=progress_clock]').css("width", progress_bar_actual + "%")//; = ;
@@ -385,16 +387,6 @@ setInterval(function() {
     }
   }
 }, 1000);
-</script>
-
-<script type="text/javascript">
-
-//    var myImageElement = document.getElementById('main_image');
-//    setInterval(function() {
-//     var myImageElement = document.getElementById('main_image');
-//     myImageElement.src = 'http://www.weblab.deusto.es/webcam/proxied.py/aquarium1?rand=' + Math.random();
-//    }, 600);
-
 </script>
 
 <script type="text/javascript"> 
