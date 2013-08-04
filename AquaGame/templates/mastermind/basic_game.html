@@ -170,7 +170,7 @@
             <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary" data-dismiss="modal">Play now!</a>
+            <a href="" class="btn btn-primary" data-dismiss="modal">Play now!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -188,7 +188,7 @@
             <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -206,14 +206,14 @@
             <p><center><img src="{% static "img/syracuse_map_1.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end modal_successes_1 -->
 
     <!-- modal_successes_2-->
-    <div class="modal fade" id="modal_successes_1">
+    <div class="modal fade" id="modal_successes_2">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header"> 
@@ -224,14 +224,14 @@
             <p><center><img src="{% static "img/syracuse_map_2.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end modal_successes_2 -->
 
     <!-- modal_successes_3-->
-    <div class="modal fade" id="modal_successes_1">
+    <div class="modal fade" id="modal_successes_3">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header"> 
@@ -242,14 +242,14 @@
             <p><center><img src="{% static "img/syracuse_map_3.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end modal_successes_3l -->
 
     <!-- modal_successes_4-->
-    <div class="modal fade" id="modal_successes_1">
+    <div class="modal fade" id="modal_successes_4">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header"> 
@@ -260,7 +260,7 @@
             <p><center><img src="{% static "img/syracuse_map_4_eureka.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-warning" data-dismiss="modal">Exit!</a>
+            <a href="" id="continue_to_ranking" class="btn btn-primary" data-dismiss="modal">Exit and continue!</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -274,35 +274,16 @@
             <h4 class="modal-title">Your time was over!</h4>
           </div>
           <div class="modal-body">
-            <p>The Romans will be the owners of Syracuse!</p>
+            <p><center>The Romans will be the owners of Syracuse!</center></p>
             <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
-            <a href="" class="btn btn-success">New game</a>
+            <a href="index" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
+            <a href="basic" class="btn btn-success">New game</a>
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end time_over_modal -->
-
-    <!-- you win Modal-->
-    <div class="modal fade" id="you_win_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">You win!</h4>
-          </div>
-          <div class="modal-body">
-            <p>You conquered Syracuse!</p>
-            <p><center><img src="{% static "img/syracuse_map_processed.jpg" %}" width= "100%" class='img-responsive'></center></p>
-          </div>
-          <div class="modal-footer">
-            <a href="#" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
-            <a href="" class="btn btn-success">Play another time</a>
-          </div>
-        </div><!-- end modal-content -->
-      </div><!-- end modal-dialog -->
-    </div><!-- end you_win_modal -->
 
     <!-- ranking Modal-->
     <div class="modal fade" id="ranking_modal">
@@ -312,17 +293,12 @@
             <h4 class="modal-title">You expel the Romans in X minutes and X seconds!</h4>
           </div>
           <div class="modal-body">
-            <p><center>It is necessary to celebrate this!</center></p>
-            <p><center>Put your name or nick in the form below, press enter and you will appear in the Ranking.</center></p>
+            <p><center>It is necessary to celebrate this!<br />Put your name or nick in the form below, press enter and you will appear in the Ranking.</center></p>
             <form action="{% url 'basic_game' %}" method="post">
               {% csrf_token %}
                 <label for="nickname">Name or Nick</label>
                 <input type="text" class="form-control" name="nickname" id="nickname_form" placeholder="Enter your name or nick"/>
             </form>
-          </div>
-          <div class="modal-footer">
-            <!--<a href="index" class="btn btn-danger" data-dismiss="modal">Close without save</a>
-            <button type="submit" value="Submit and view my position in the ranking" class="btn btn-success"/>-->
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -359,19 +335,14 @@ $(function() {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
       }
       if (sum_balls_counter == 10){
-        if (parseInt(num_successes) < 4) {
-          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
-          //$('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').addClass('badge badge-big-success').html(num_successes);
-          $('#modal_successes_' + num_successes).modal('show');
-          panel_counter = panel_counter + 1;
-          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
-          $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
-          $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
-          sum_balls_counter = 0;
-          num_successes = 0;
-        } else {
-          $('#you_win_modal').modal('show');
-        }
+        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
+        $('#modal_successes_' + num_successes).modal('show');
+        panel_counter = panel_counter + 1;
+        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
+        $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
+        $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
+        sum_balls_counter = 0;
+        num_successes = 0;
       }
     }
   });
@@ -422,10 +393,12 @@ setInterval(function() {
 </script>
 
 <script type="text/javascript"> 
-//$('#initial_modal').modal('show');
+$('#initial_modal').modal('show');
 $("#instructions_button").click(function() {
-  //$('#initial_modal').modal('show');
   $('body').chardinJs('start');
+});
+$("#continue_to_ranking").click(function() {
+  $('#ranking_modal').modal('show');
 });
 </script>
 
