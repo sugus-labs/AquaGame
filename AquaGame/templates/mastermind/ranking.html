@@ -22,11 +22,15 @@
               </tr>
             </thead>
             <tbody>
-            {% for visita in participant_list %}
-              <tr>
+            {% for participant in participant_list %}
+                {% if participant_id == participant.id%}
+                  <tr class="success">
+                {% else %}
+                  <tr>
+                {% endif %}
                 <td>{{ forloop.counter }}</td>
-                <td>{{visita.nick_name}}</td>
-                <td>{{visita.time_needed}}</td>
+                <td>{{ participant.nick_name }}</td>
+                <td>{{ participant.time_needed }}</td>
               </tr>
             {% endfor %}
             <tbody>
