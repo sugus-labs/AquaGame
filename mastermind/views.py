@@ -5,7 +5,11 @@ def index(request):
     return render(request, 'mastermind/index.html')
 
 def basic_game(request):
-    return render(request, 'mastermind/basic_game.html')
+	if request.method == 'GET':
+		return render(request, 'mastermind/basic_game.html')
+	else:
+		print 'POST:', request.POST['nickname']
+		return render(request, 'mastermind/ranking.html')
 
 def ranking(request):
 	participant_list = Participant.objects.order_by('time_needed')

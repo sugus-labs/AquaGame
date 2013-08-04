@@ -312,19 +312,17 @@
             <h4 class="modal-title">You expel the Romans in X minutes and X seconds!</h4>
           </div>
           <div class="modal-body">
-            <p>It is necessary to celebrate this! Put your name or nick in the form below and you will appear in the Ranking.</p>
-            <form>
-              <fieldset>
-                <div class="form-group">
-                  <label for="nickname">Name or Nick</label>
-                  <input type="text" class="form-control" id="nickname" placeholder="Enter your name or nick">
-                </div>
-              </fieldset>
+            <p><center>It is necessary to celebrate this!</center></p>
+            <p><center>Put your name or nick in the form below, press enter and you will appear in the Ranking.</center></p>
+            <form action="{% url 'basic_game' %}" method="post">
+              {% csrf_token %}
+                <label for="nickname">Name or Nick</label>
+                <input type="text" class="form-control" name="nickname" id="nickname_form" placeholder="Enter your name or nick"/>
             </form>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-            <a href="" class="btn btn-success">Submit and view my position in the ranking</a>
+            <!--<a href="index" class="btn btn-danger" data-dismiss="modal">Close without save</a>
+            <button type="submit" value="Submit and view my position in the ranking" class="btn btn-success"/>-->
           </div>
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
@@ -424,7 +422,7 @@ setInterval(function() {
 </script>
 
 <script type="text/javascript"> 
-$('#initial_modal').modal('show');
+//$('#initial_modal').modal('show');
 $("#instructions_button").click(function() {
   //$('#initial_modal').modal('show');
   $('body').chardinJs('start');
