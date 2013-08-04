@@ -12,9 +12,9 @@ def basic_game(request):
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
 		participant = Participant(nick_name=nickname, time_needed=time, date_created=timezone.now())
-		saved = participant.save()
-		print saved
-		return redirect('mastermind.views.ranking')
+		participant.save()
+		participant_id = participant.id
+		return redirect('ranking')
 
 def ranking(request):
 	participant_list = Participant.objects.order_by('time_needed')
