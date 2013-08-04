@@ -8,7 +8,8 @@ def basic_game(request):
 	if request.method == 'GET':
 		return render(request, 'mastermind/basic_game.html')
 	else:
-		print 'POST:', request.POST['nickname']
+		print 'Nickname:', request.POST['nickname']
+		print 'Time:', request.POST['time_needed']
 		return render(request, 'mastermind/ranking.html')
 
 def ranking(request):
