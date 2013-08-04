@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from mastermind.models import Ball, Participant
 from django.utils import timezone
 
@@ -14,7 +14,7 @@ def basic_game(request):
 		participant = Participant(nick_name=nickname, time_needed=time, date_created=timezone.now())
 		saved = participant.save()
 		print saved
-		return render(request, 'mastermind/ranking.html')
+		return redirect('mastermind.views.ranking')
 
 def ranking(request):
 	participant_list = Participant.objects.order_by('time_needed')

@@ -339,6 +339,7 @@ $(function() {
         if (num_successes == 4){
           minutes = parseInt(total_minutes) - parseInt(total_real) - 1;
           seconds = 60 - seconds_in_minute;
+          seconds = pretty_time_string(seconds);
           if (seconds == 60) {
             seconds = 0;
           }
