@@ -13,8 +13,22 @@
           <h3 class="panel-title">Ranking</h3>
         </div>
         <div>
-          <p></p>
-          <p></p>
+          <table class="table table-striped"><h4>
+            <thead>
+              <tr>
+                <th>Nickname</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for visita in participant_list %}
+              <tr>
+                <td>{{visita.nick_name}}</td>
+                <td>{{visita.time_needed}}</td>
+              </tr>
+            {% endfor %}
+            <tbody>
+          </h4></table>
         </div>
       </div><!-- end main_panel -->
     </div><!-- end unique_column -->
