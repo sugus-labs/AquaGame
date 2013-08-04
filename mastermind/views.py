@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from mastermind.models import Ball, Participant
+from django.utils import timezone
 
 def index(request):
     return render(request, 'mastermind/index.html')
@@ -8,8 +9,11 @@ def basic_game(request):
 	if request.method == 'GET':
 		return render(request, 'mastermind/basic_game.html')
 	else:
-		print 'Nickname:', request.POST['nickname']
-		print 'Time:', request.POST['time_needed']
+		nickname = request.POST['nickname']
+		time = request.POST['time_needed']
+		participant = Participant(nick_name=nickname, time_needed=time, date_created=timezone.now())
+		saved = participant.save()
+		print saved
 		return render(request, 'mastermind/ranking.html')
 
 def ranking(request):

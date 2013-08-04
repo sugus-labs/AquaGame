@@ -337,8 +337,13 @@ $(function() {
       }
       if (sum_balls_counter == 10){
         if (num_successes == 4){
-          $('h4[id=final_time_text]').html('You expel the Romans in ' + total_real + ' minutes and ' + seconds_in_minute + ' seconds!');
-          $('input[id=time_needed_field]').attr('value', total_real + ':' + seconds_in_minute);
+          minutes = parseInt(total_minutes) - parseInt(total_real) - 1;
+          seconds = 60 - seconds_in_minute;
+          if (seconds == 60) {
+            seconds = 0;
+          }
+          $('h4[id=final_time_text]').html('You expel the Romans in ' + minutes + ' minutes and ' + seconds + ' seconds!');
+          $('input[id=time_needed_field]').attr('value', minutes + ':' + seconds);
           clearInterval(timer);
         }
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
