@@ -22,7 +22,6 @@ def basic_game(request):
 		participant_id = participant.id
 		context = return_all_participants_list()
 		context['participant_id'] = participant_id
-		print context
 		return render(request, 'mastermind/ranking.html', context)
 
 def ranking(request):
