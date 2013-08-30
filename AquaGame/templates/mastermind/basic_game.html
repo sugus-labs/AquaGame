@@ -349,6 +349,7 @@ $(function() {
         $(this).find("img").attr('src', ball_image).addClass("ball_properties img-responsive");
         num_successes = num_successes + 1;
         //draggable_ball.darggable('destroy');
+        dropped = true;
       } else {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
       }
