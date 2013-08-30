@@ -328,6 +328,7 @@ $(function() {
   $('div[id^=droppable_]').droppable({
     drop: function(event, ui) {
       dropped = $(this);
+      new_ball = ui.draggable.find('img').attr('src');
       liquid = ui.draggable.find('span').clone();
       dropped.find('div').html('<b>' + liquid.text() + '</b>');
       dropped.droppable('disable');
@@ -336,7 +337,9 @@ $(function() {
       number = parseInt(gap.charAt(12)) + 1;
       sum_balls_counter = sum_balls_counter + parseInt(number);
       if (ballsArray[number] == ball_object) {
-        $(this).find("img").attr('src', '{% static "img/ball_shell_hover_success.png" %}').addClass("ball_properties img-responsive");
+        //alert(ball_object);
+        //alert(new_ball);
+        $(this).find("img").attr('src', new_ball).addClass("ball_properties img-responsive");
         num_successes = num_successes + 1;
       } else {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
