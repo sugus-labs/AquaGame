@@ -9,6 +9,15 @@
   <style>
   #droppable { height: 150px; }
   .ball_properties { position: relative; z-index: 99; }
+  /*.panel-fixed-top {
+    position:fixed;
+    z-index: 1030;
+    width: 50%;
+    height: 40%;
+    left: 50%;
+    top: 0%;
+    margin-left: -300px; /*half the width*/
+  }*/
   </style>
 
   <div id="span_master row-fluid">
@@ -334,7 +343,6 @@ $(function() {
       sum_balls_counter = sum_balls_counter + parseInt(number);
       if (ballsArray[number] == ball_object) {
         //alert(ball_object);
-        alert(this);
         $(this).find("img").attr('src', new_ball).addClass("ball_properties img-responsive");
         num_successes = num_successes + 1;
       } else {
