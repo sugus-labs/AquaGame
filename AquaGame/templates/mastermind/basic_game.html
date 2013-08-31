@@ -366,6 +366,7 @@ $(function() {
           clearInterval(timer);
           $('div[id=timer_panel]').remove()
         }
+        sum_balls_counter = 0;
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
         $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
         $('#modal_successes_' + num_successes).modal('show');
@@ -376,6 +377,7 @@ $(function() {
           img_string = value.src;
           if (img_string.search('danger') == -1) {
             $('div[id=left_span_' + panel_counter + ']').find('div[id=droppable_' + panel_counter + '_' +  key + ']').find('img').attr('src',img_string)
+            sum_balls_counter = sum_balls_counter + key + 1;
           } 
           //alert(key);
           //alert(value);
@@ -383,7 +385,6 @@ $(function() {
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
         $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
         $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
-        sum_balls_counter = 0;
         num_successes = 0;
       }
     }
