@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponseRedirect
-from mastermind.models import Ball, Participant
+from mastermind.models import Ball, Participant, BallForm
 from django.utils import timezone
+from django.forms.models import formset_factory
 
 def return_all_participants_list():
 	participant_list = Participant.objects.order_by('time_needed')
@@ -27,3 +28,16 @@ def basic_game(request):
 def ranking(request):
 	context = return_all_participants_list()
 	return render(request, 'mastermind/ranking.html', context)
+
+def insert_balls_data(request):
+    balls_formset = formset_factory(BallForm)
+    if request.method == 'POST':
+    	print 'POST:', request.POST
+    	print 'FILES', request.FILES
+        formset = balls_formset(request.POST, request.FILES)
+        if formset.is_valid():
+            # do something with the formset.cleaned_data
+            pass
+    else:
+        formset = balls_formset()
+    return render_to_response('mastermind/insert_balls_data.html', {'balls_formset': balls_formset})

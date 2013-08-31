@@ -3,9 +3,9 @@ from django.forms import ModelForm
 
 class Ball(models.Model):
 	COLOUR_OPTIONS = (
-		('W', 'White'), ('B', 'Black'), ('P', 'Purple'), ('R', 'Red'), 
-		('Y', 'Yellow'), ('G', 'Green'),('O', 'Orange'), ('L', 'Blue'),
-		('I', 'Pink'), ('A', 'Gray'),
+		('W', 'white'), ('B', 'black'), ('P', 'purple'), ('R', 'red'), 
+		('Y', 'yellow'), ('G', 'green'),('O', 'orange'), ('L', 'blue'),
+		('I', 'pink'), ('A', 'gray'),
 		)
 	colour = models.CharField(max_length=1, choices=COLOUR_OPTIONS, default='W',
 		help_text = "Select the colour of the ball from list.")

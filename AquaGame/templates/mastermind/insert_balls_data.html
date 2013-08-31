@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Insert balls data{% endblock %}
+
+{% block content %}
+
+  {% load staticfiles %}
+
+    <div id="span_master row-fluid">
+        <div id="unique_column" class="col-lg-12">
+            <div id="main_panel" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the level of game that you want." data-position="bottom">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Enter the balls data</h3>
+                </div>
+                <div>
+
+    <br />
+    <form method="post" action="">
+	   {% csrf_token %}
+	    {{ balls_formset.management_form }}
+        <table>
+    	   {{balls_formset}}
+        </table>
+        <input type="submit" value="create" />
+	    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+{% endblock %}
