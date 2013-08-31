@@ -33,10 +33,15 @@ def insert_balls_data(request):
     balls_formset = formset_factory(BallForm)
     if request.method == 'POST':
     	print 'POST:', request.POST
-    	print 'FILES', request.FILES
-        formset = balls_formset(request.POST, request.FILES)
+    	print "Colour:", request.POST['form-0-colour']
+    	print "Liquid:", request.POST['form-0-liquid_contained']
+    	print "Density:", request.POST['form-0-liquid_contained_density']
+        formset = balls_formset(request.POST)
+        print formset
+        print balls_formset
+        print formset.is_valid()
         if formset.is_valid():
-            # do something with the formset.cleaned_data
+            new_ball = formset.save()
             pass
     else:
         formset = balls_formset()
