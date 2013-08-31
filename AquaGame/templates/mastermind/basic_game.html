@@ -319,6 +319,10 @@
 </div><!-- end left_colum -->
 </div><!-- end master_row -->
 
+<script type="text/javascript">
+//$('div[id^=ball_]').toggle("highlight");
+</script>
+
 <script>
 ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
 panel_counter = 0;
@@ -395,6 +399,7 @@ $(function() {
 </script>
 
 <script>
+
 // DEBUG - var total_minutes = 1;
 var total_minutes = 4;
 var total_real = parseInt(total_minutes) - 1;
@@ -409,8 +414,7 @@ function pretty_time_string(num) {
 }
 
 timer = setInterval(function() {
-  progress_bar_actual = parseFloat(parseFloat(100) - parseFloat((parseFloat(total_real)*60 + parseFloat(seconds_in_minute)) / parseFloat(step))) 
-  //alert(progress_bar_actual)
+  progress_bar_actual = parseFloat(parseFloat(100) - parseFloat((parseFloat(total_real)*60 + parseFloat(seconds_in_minute)) / parseFloat(step)))
   $('div[id=progress_clock]').css("width", progress_bar_actual + "%")//; = ;
   seconds_in_minute = pretty_time_string(seconds_in_minute)
   $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
@@ -429,7 +433,10 @@ timer = setInterval(function() {
 </script>
 
 <script type="text/javascript"> 
-$('#initial_modal').modal('show');
+$(document).ready(function () {
+  $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
+  $('#initial_modal').modal('show');
+});
 $("#instructions_button").click(function() {
   $('body').chardinJs('start');
 });
