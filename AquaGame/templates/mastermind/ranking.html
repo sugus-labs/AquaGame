@@ -28,7 +28,7 @@
                   <tr class="success">
                     <td><strong>{{ forloop.counter }}</strong></td>
                     <script type="text/javascript"> 
-                      $('div[id=position_alert]').removeClass('hidden').html('<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Very well!</strong> You are in the {{ forloop.counter }} position.');
+                      $('div[id=position_alert]').removeClass('hidden').html('<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Very well!</strong> You are in the {{ forloop.counter }}<sup>th</sup> position.');
                     </script>
                     <td><strong>{{ participant.nick_name }}<strong></td>
                     <td><strong>{{ participant.time_needed }}</strong></td>

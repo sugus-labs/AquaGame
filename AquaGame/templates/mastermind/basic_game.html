@@ -331,6 +331,8 @@ $(function() {
   });
   
   $('div[id^=droppable_]').droppable({
+    activeClass: "ui-state-hover",
+    hoverClass: "ui-state-active",
     drop: function(event, ui) {
       dropped = $(this);
       ball_image = ui.draggable.find('img').attr('src');
@@ -344,12 +346,11 @@ $(function() {
       sum_balls_counter = sum_balls_counter + parseInt(number);
       draggable_ball = ui.draggable;
       if (ballsArray[number] == ball_object) {
+        //draggable_ball.find("img").attr('src').fadeOut("slow");
         draggable_ball.find("img").attr('src', '{% static "img/ball_shell.png" %}');
-        //draggable_ball.find("img").attr('src', '').addClass("ball_properties img-responsive");
         $(this).find("img").attr('src', ball_image);
         num_successes = num_successes + 1;
-        //draggable_ball.darggable('destroy');
-        dropped = true;
+        draggable_ball.draggable('destroy');
       } else {
         $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
       }
