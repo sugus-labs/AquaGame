@@ -10,32 +10,33 @@
         <div id="unique_column" class="col-lg-12">
             <div id="main_panel" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the level of game that you want." data-position="bottom">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Enter the balls data</h3>
+                    <h3 class="panel-title">Balls data</h3>
                 </div>
-                <div>
-
-    <br />
-    <form method="post" class="form-signin" action="">
-	   {% csrf_token %}
-       <div class="form-group">
-	    {{ balls_formset.management_form }}
-            {% for form in balls_formset %}
-                {{ form.id }}
-                <ul>
-                    <li>{{ form.colour }}</li>
-                    <p class="help-block">Select the colour of the ball.</p>
-                    <li>{{ form.liquid_contained }}</li>
-                    <p class="help-block">Put the liquid contained.</p>
-                    <li>{{ form.liquid_contained_density }}</li>
-                    <p class="help-block">Put the density of ball. Number must be like '1.24' or '0.8'.</p>
-                </ul>
-            {% endfor %}
-        <input type="submit" class="btn btn-primary" value="create" />
-	    <input type="hidden" name="next" value="{{ next }}" />
+                <form method="post" class="form-horizontal" action="">
+	               {% csrf_token %}
+	               {{ balls_formset.management_form }}
+                   {% for form in balls_formset %}
+                        <div class="form-group">
+                            {{ form.colour }}
+                            <p class="help-block">Select the colour of the ball.</p>
+                        </div>
+                        <div class="form-group">
+                                {{ form.liquid_contained }}
+                                <p class="help-block">Put the liquid contained.</p>
+                        </div>
+                        <div class="form-group">
+                                {{ form.liquid_contained_density }} 
+                                <p class="help-block">Put the density of ball. Number must be like '1.24' or '0.8'.</p>
+                        </div>
+                    {% endfor %}
+                <div class="form-group">    
+                    <input type="submit" class="btn btn-primary" value="create" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
     </form>
 
 <script>
-$('input[id$=colour]').addClass("form-control input-block-level");
+$('select[id$=colour]').addClass("form-control input-block-level");
 $('input[id$=contained]').addClass("form-control input-block-level");
 $('input[id$=density]').addClass("form-control input-block-level");
 </script>
