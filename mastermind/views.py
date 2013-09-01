@@ -33,6 +33,7 @@ def insert_balls_data(request):
     BallFormSet = modelformset_factory(Ball)
     if request.method == 'POST':
         balls_formset = BallFormSet(request.POST, request.FILES)
+        print balls_formset.errors
         if balls_formset.is_valid():
             balls_formset.save()
             # do something.

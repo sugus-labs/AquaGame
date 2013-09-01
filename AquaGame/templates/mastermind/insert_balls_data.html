@@ -16,25 +16,47 @@
 	               {% csrf_token %}
 	               {{ balls_formset.management_form }}
                    {% for form in balls_formset %}
-                        {{ form.id }}
-                        <div class="form-group">
-                            {{ form.colour }}
-                            <p class="help-block">Select the colour of the ball.</p>
-                        </div>
-                        <div class="form-group">
+                        {% if forloop.last %}
+                            <div class="col-12 col-sm-12 col-lg-3 hidden">
+                                {{ form.id }}
+                                <div class="form-group">
+                                {{ form.colour }}
+                                <p class="help-block">Select the colour of the ball.</p>
+                            </div>
+                            <div class="form-group">
                                 {{ form.liquid_contained }}
                                 <p class="help-block">Put the liquid contained.</p>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                                 {{ form.liquid_contained_density }} 
                                 <p class="help-block">Put the density of ball. Number must be like '1.24' or '0.8'.</p>
-                        </div>
+                            </div>
+                        {% else %}
+                            <div class="col-12 col-sm-12 col-lg-3">
+                            {{ form.id }}
+                            <div class="form-group">
+                                {{ form.colour }}
+                                <p class="help-block">Select the colour of the ball.</p>
+                            </div>
+                            <div class="form-group">
+                                {{ form.liquid_contained }}
+                                <p class="help-block">Put the liquid contained.</p>
+                            </div>
+                            <div class="form-group">
+                                {{ form.liquid_contained_density }} 
+                                <p class="help-block">Put the density of ball. Number must be like '1.24' or '0.8'.</p>
+                            </div>
+                        {% endif %}
+                    </div>
                     {% endfor %}
-                <div class="form-group">    
-                    <input type="submit" class="btn btn-primary" value="create" />
-                    <input type="hidden" name="next" value="{{ next }}" />
-                </div>
-    </form>
+                    <div class="form-group">    
+                        <input type="submit" class="btn btn-primary" value="create" />
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <script>
 $('select[id$=colour]').addClass("form-control input-block-level");
