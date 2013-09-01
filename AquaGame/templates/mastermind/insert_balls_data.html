@@ -18,9 +18,13 @@
     <form method="post" action="">
 	   {% csrf_token %}
 	    {{ balls_formset.management_form }}
-        <table>
-    	   {{balls_formset}}
-        </table>
+            {% for form in balls_formset %}
+                {{ form.id }}
+                <ul>
+                    <li>{{ form.colour }}</li>
+                    <li>{{ form.liquid_contained }}</li>
+                </ul>
+            {% endfor %}
         <input type="submit" value="create" />
 	    <input type="hidden" name="next" value="{{ next }}" />
     </form>

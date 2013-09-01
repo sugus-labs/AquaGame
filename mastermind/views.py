@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponseRedirect
 from mastermind.models import Ball, Participant, BallForm
 from django.utils import timezone
-from django.forms.models import formset_factory
+from django.forms.models import modelformset_factory
 
 def return_all_participants_list():
 	participant_list = Participant.objects.order_by('time_needed')
@@ -30,19 +30,17 @@ def ranking(request):
 	return render(request, 'mastermind/ranking.html', context)
 
 def insert_balls_data(request):
-    balls_formset = formset_factory(BallForm)
+
+
+
+
+    BallFormSet = modelformset_factory(Ball)
     if request.method == 'POST':
-    	print 'POST:', request.POST
-    	print "Colour:", request.POST['form-0-colour']
-    	print "Liquid:", request.POST['form-0-liquid_contained']
-    	print "Density:", request.POST['form-0-liquid_contained_density']
-        formset = balls_formset(request.POST)
-        print formset
-        print balls_formset
-        print formset.is_valid()
-        if formset.is_valid():
-            new_ball = formset.save()
-            pass
+        balls_formset = BallFormSet(request.POST, request.FILES)
+        if balls_formset.is_valid():
+            balls_formset.save()
+            # do something.
     else:
-        formset = balls_formset()
+        balls_formset = BallFormSet()
+
     return render_to_response('mastermind/insert_balls_data.html', {'balls_formset': balls_formset})
