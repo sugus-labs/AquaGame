@@ -8,10 +8,7 @@
 
     <div id="span_master row-fluid">
         <div id="unique_column" class="col-lg-12">
-            <div id="main_panel" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the level of game that you want." data-position="bottom">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Balls data</h3>
-                </div>
+            <div id="main_panel" class="col-12 col-sm-12 col-lg-12 alert alert-info">
                 <form method="post" class="col-12 col-sm-12 col-lg-12 form-horizontal" action="">
 	               {% csrf_token %}
 	               {{ balls_formset.management_form }}
@@ -23,24 +20,29 @@
                                 {{ form.liquid_contained }}
                                 {{ form.liquid_contained_density }} 
                         {% else %}
-                            <div class="col-12 col-sm-12 col-lg-3">
-                                {{ form.id }}
-                                <div class="form-group">
-                                    {{ form.colour }}
-                                    <p class="help-block">Select the colour of the ball.</p>
+                            <div class="col-12 col-sm-12 col-lg-3 panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Ball {{ forloop.counter }}</h3>
                                 </div>
-                                <div class="form-group">
-                                    {{ form.liquid_contained }}
-                                    <p class="help-block">Put the liquid contained.</p>
-                                </div>
-                                <div class="form-group">
-                                    {{ form.liquid_contained_density }} 
-                                    <p class="help-block">Put the density of ball. Number must be like '1.24' or '0.8'.</p>
-                                </div>
+                                <div class="col-12 col-sm-12 col-lg-12 ">
+                                    {{ form.id }}
+                                    <div class="form-group">
+                                        {{ form.colour }}
+                                        <p class="help-block">Select the colour of the ball.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.liquid_contained }}
+                                        <p class="help-block">Put the liquid contained.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.liquid_contained_density }} 
+                                        <p class="help-block">Density of the ball. Number like '1.24' or '0.8'.</p>
+                                    </div>
                         {% endif %}
-                    </div>
+                                </div>
+                        </div>
                     {% endfor %}
-                    <div class="form-group">  
+                    <div class="form-group col-12 col-sm-12 col-lg-12">  
                         <center>  
                             <input type="submit" class="btn btn-success" value="Submit and Save" />
                             <input type="hidden" name="next" value="{{ next }}" />
