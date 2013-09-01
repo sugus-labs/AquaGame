@@ -12,10 +12,11 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Balls data</h3>
                 </div>
-                <form method="post" class="form-horizontal" action="">
+                <form method="post" class="col-12 col-sm-12 col-lg-12 form-horizontal" action="">
 	               {% csrf_token %}
 	               {{ balls_formset.management_form }}
                    {% for form in balls_formset %}
+                        {{ form.id }}
                         <div class="form-group">
                             {{ form.colour }}
                             <p class="help-block">Select the colour of the ball.</p>
