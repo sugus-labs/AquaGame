@@ -30,10 +30,6 @@ def ranking(request):
 	return render(request, 'mastermind/ranking.html', context)
 
 def insert_balls_data(request):
-
-
-
-
     BallFormSet = modelformset_factory(Ball)
     if request.method == 'POST':
         balls_formset = BallFormSet(request.POST, request.FILES)
@@ -42,5 +38,4 @@ def insert_balls_data(request):
             # do something.
     else:
         balls_formset = BallFormSet()
-
     return render_to_response('mastermind/insert_balls_data.html', {'balls_formset': balls_formset})
