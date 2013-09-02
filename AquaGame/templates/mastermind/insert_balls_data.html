@@ -63,11 +63,12 @@ $('input[id$=contained]').addClass("form-control input-block-level");
 $('input[id$=density]').addClass("form-control input-block-level");
 
 $(document).ready(function () {
-  initial_image_needed = $('select[id$=colour]').find('option:selected')
+  initial_image_needed = $('select[id$=colour]').find('option:selected').slice(0,4)
   $.each(initial_image_needed, function() {
     option = this;
     option_text = this.text;
-    image_path = this.parent().parent().parent().find('img')
+    //alert(option_text)
+    image_path = $(this).parent().parent().parent().find('img')
     image_element = image_path.attr('src')
     words = image_element.split("_")
     static_path = words[0] + "_"
