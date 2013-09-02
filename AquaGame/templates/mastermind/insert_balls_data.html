@@ -65,4 +65,12 @@ $( "#exit_button" ).click(function() {
   alert(".click() called.");
 });
 </script>
+
+<script>
+$('select[id$=colour]').click(function() {
+    option = $(this).find('option:selected').text();
+    //alert(option)
+})
+</script>
+
 {% endblock %}
