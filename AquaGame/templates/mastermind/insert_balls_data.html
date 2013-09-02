@@ -68,8 +68,15 @@ $( "#exit_button" ).click(function() {
 
 <script>
 $('select[id$=colour]').click(function() {
-    option = $(this).find('option:selected').text();
-    //alert(option)
+    option = $(this).find('option:selected')
+    option_text = option.text();
+    image_path = option.parent().parent().parent().find('img')
+    image_element = image_path.attr('src')
+    words = image_element.split("_")
+    static_path = words[0] + "_"
+    new_image_path = static_path + option_text + ".png"
+    image_path.attr('src', new_image_path)
+
 })
 </script>
 
