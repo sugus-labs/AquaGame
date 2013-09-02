@@ -14,7 +14,14 @@ def index(request):
 
 def basic_game(request):
 	if request.method == 'GET':
-		return render(request, 'mastermind/basic_game.html')
+		balls = Ball.objects.all()
+		balls_colour_list = []
+		for ball in balls:
+			#print ball.colour
+			balls_colour_list.append(ball.colour)
+		#print balls_colour_list
+		context = balls_colour_list
+		return render(request, 'mastermind/basic_game.html', context)
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
