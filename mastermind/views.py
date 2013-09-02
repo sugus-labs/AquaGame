@@ -25,7 +25,7 @@ def basic_game(request):
 		context['participant_id'] = participant_id
 		return render(request, 'mastermind/ranking.html', context)
 
-def basic_game(request):
+def normal_game(request):
 	if request.method == 'GET':
 		return render(request, 'mastermind/normal_game.html')
 	else:
