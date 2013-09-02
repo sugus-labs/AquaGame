@@ -58,8 +58,12 @@
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
         </div>
-        <center><img id="main_image" src="{% static "img/example_image.jpg" %}" width= "100%" class="img-responsive"/></center>
-        <p><center><button id="select_image_button" type="button" class="btn btn-primary">Select another image</button></center></p>
+        <ul class="bxslider">
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+        </ul>
       </div><!-- end right_span_image -->
 
     </div><!-- end right_column -->
@@ -436,6 +440,7 @@ timer = setInterval(function() {
 $(document).ready(function () {
   $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
   $('#initial_modal').modal('show');
+  $('.bxslider').bxSlider();
 });
 $("#instructions_button").click(function() {
   $('body').chardinJs('start');
