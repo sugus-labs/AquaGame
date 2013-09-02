@@ -88,21 +88,24 @@
         <div class="panel-heading">
           <h3 class="panel-title">Drop the balls here</h3> 
         </div>
-        <div id="droppable_0_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <div id="droppable_0_0" class="ui-widget-content col-2 col-sm-2 col-lg-2">
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
           <p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>
         </div>
-        <div id="droppable_0_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <div id="droppable_0_1" class="ui-widget-content col-2 col-sm-2 col-lg-2">
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
           <p><center><b><span class="ball_properties text-primary">AGUA SALADA</span></b></center></p>
         </div>
-        <div id="droppable_0_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <div id="droppable_0_2" class="ui-widget-content col-2 col-sm-2 col-lg-2">
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
           <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
         </div>                  
-        <div id="droppable_0_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <div id="droppable_0_3" class="ui-widget-content col-2 col-sm-2 col-lg-2">
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center><p>
           <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
+        </div>
+        <div id="board_0" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
+          <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
         </div>
       </div><!-- end left_span_0 -->
   
@@ -127,6 +130,9 @@
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
           <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
         </div>
+        <div id="board_1" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
+          <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
+        </div>
       </div><!-- end left_span_1 -->
 
      <div id="left_span_2" class="col-12 col-sm-12 col-lg-12 panel panel-info">
@@ -148,6 +154,9 @@
         <div id="droppable_2_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
           <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
           <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+        </div>
+        <div id="board_2" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
+          <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
         </div>
       </div><!-- end left_span_2 -->
 
@@ -171,6 +180,9 @@
         <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
         <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
       </div>
+      <div id="board_3" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
+          <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
+        </div>
     </div><!-- end left_span_3 -->
 
     <!-- Initial Modal-->
@@ -354,13 +366,10 @@ $(function() {
       sum_balls_counter = sum_balls_counter + parseInt(number);
       draggable_ball = ui.draggable;
       if (ballsArray[number] == ball_object) {
-        //draggable_ball.find("img").attr('src').fadeOut("slow");
-        draggable_ball.find("img").attr('src', '{% static "img/ball_shell.png" %}');
         $(this).find("img").attr('src', ball_image);
         num_successes = num_successes + 1;
-        draggable_ball.draggable('destroy');
       } else {
-        $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
+        $(this).find("img").attr('src', ball_image);
       }
       if (sum_balls_counter == 10){
         if (num_successes == 4){
@@ -379,20 +388,9 @@ $(function() {
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
         $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
         $('#modal_successes_' + num_successes).modal('show');
+
         num_successes = 0;
         panel_counter = panel_counter + 1;
-        img_list = $('div[id=left_span_' + (panel_counter - 1) + ']').find('img');
-        $.each(img_list, function(key, value) {
-          //test = this;
-          img_string = value.src;
-          if (img_string.search('danger') == -1) {
-            $('div[id=left_span_' + panel_counter + ']').find('div[id=droppable_' + panel_counter + '_' +  key + ']').find('img').attr('src',img_string)
-            sum_balls_counter = sum_balls_counter + key + 1;
-            num_successes = num_successes + 1;
-          } 
-          //alert(key);
-          //alert(value);
-        });
         $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
         $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
         $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
