@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+
+{% block title %}Basic game{% endblock %}
+
+{% block content %} 
+
+  {% load staticfiles %}
+
+  <style>
+  #droppable { height: 150px; }
+  .ball_properties { position: relative; z-index: 99; }
+  /*.panel-fixed-top {
+    position:fixed;
+    z-index: 1030;
+    width: 50%;
+    height: 40%;
+    left: 50%;
+    top: 0%;
+    margin-left: -300px; /*half the width*/
+  }*/
+  </style>
+
+  <div id="span_master row-fluid">
+    <div id="right_column" class="col-lg-6">
+      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Select the balls and drag to their positions</h3>
+        </div>
+        <div class="panel-body">
+          <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
+            <div id="ball_blue" class="ui-widget-content">
+              <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <!--<p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>-->
+            </div>
+          </div>
+          <div id="span_ball_purple" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
+            <div id="ball_purple" class="ui-widget-content">
+              <p><center><img src="{% static "img/ball_purple.png" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <!--<p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>-->
+            </div>
+          </div>
+          <div id="span_ball_yellow" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
+            <div id="ball_yellow" class="ui-widget-content">
+              <p><center><img src="{% static "img/ball_yellow.png" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <!--<p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>-->
+            </div>
+          </div>
+          <div id="span_ball_white" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
+            <div id="ball_white" class="ui-widget-content">
+              <p><center><img src="{% static "img/ball_white.png" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <!--<p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>-->
+            </div>
+          </div>
+        </div>
+      </div><!-- end right_span_main -->
+
+      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Selected image</h3>
+        </div>
+        <ul class="bxslider">
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+        </ul>
+      </div><!-- end right_span_image -->
+
+    </div><!-- end right_column -->
+
+    <div id="left_column" class="col-lg-6">
+
+      <div id="timer_panel" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Time remaining</h3> 
+        </div>
+        <div id="timer_text" class="col-10 col-sm-10 col-lg-10">
+          <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-success" id="progress_clock" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="col-2 col-sm-2 col-lg-2">
+          <div><span id="timer" class="badge badge-big-success"></span></div>
+        </div>
+      </div><!-- end timer_panel -->
+
+      <div id="left_span_0" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
+        <div class="panel-heading">
+          <h3 class="panel-title">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_0_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
+          <p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>
+        </div>
+        <div id="droppable_0_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
+          <p><center><b><span class="ball_properties text-primary">AGUA SALADA</span></b></center></p>
+        </div>
+        <div id="droppable_0_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
+          <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
+        </div>                  
+        <div id="droppable_0_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center><p>
+          <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
+        </div>
+      </div><!-- end left_span_0 -->
+  
+     <div id="left_span_1" class="col-12 col-sm-12 col-lg-12 panel panel-info">
+        <div class="panel-heading">
+          <!--<button id="review_0" type="button" class="btn btn-default pull-right">Review</button>-->
+          <h3 class="panel-title hidden">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_1_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">GASOLINA</span></b></center></p>
+        </div>
+        <div id="droppable_1_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AGUA SALADA</span></b></center></p>
+        </div>
+        <div id="droppable_1_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AGUA</span></b></center></p>
+        </div>                  
+        <div id="droppable_1_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+        </div>
+      </div><!-- end left_span_1 -->
+
+     <div id="left_span_2" class="col-12 col-sm-12 col-lg-12 panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title hidden">Drop the balls here</h3> 
+        </div>
+        <div id="droppable_2_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">GASOLINA</span></b></center></p>
+        </div>
+        <div id="droppable_2_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AGUA SALADA</span></b></center></p>
+        </div>
+        <div id="droppable_2_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AGUA</span></b></center></p>
+        </div>                  
+        <div id="droppable_2_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+          <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+          <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+        </div>
+      </div><!-- end left_span_2 -->
+
+   <div id="left_span_3" class="col-12 col-sm-12 col-lg-12 panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title hidden">Drop the balls here</h3> 
+      </div>
+      <div id="droppable_3_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+        <p><center><b><span class="ball_properties text-primary hidden">GASOLINA</span></b></center></p>
+      </div>
+      <div id="droppable_3_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+        <p><center><b><span class="ball_properties text-primary hidden">AGUA SALADA</span></b></center></p>
+      </div>
+      <div id="droppable_3_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+        <p><center><b><span class="ball_properties text-primary hidden">AGUA</span></b></center></p>
+      </div>                  
+      <div id="droppable_3_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
+        <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
+        <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+      </div>
+    </div><!-- end left_span_3 -->
+
+    <!-- Initial Modal-->
+    <div class="modal fade" id="initial_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Help Archimedes to reconquer Syracusa!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>In this moments all the cities of Syracuse are Conquered by the Romans.<br/> You have only 4 mins to guess all the balls and expels the Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" class="btn btn-primary" data-dismiss="modal">Play now!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end initial_modal -->
+
+    <!-- modal_successes_0-->
+    <div class="modal fade" id="modal_successes_0">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Oh NO! You didn't guess any ball!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>All the cities of Syracuse are Conquered by the Romans. All of them!<br/> Try to guess the balls quickly to expel the Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end modal_successes_0 -->
+
+    <!-- modal_successes_1-->
+    <div class="modal fade" id="modal_successes_1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Well! You guessed one ball!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>You conquered one of the four cities, build a temple and kicked out the Romans!<br/> Try to guess more the next time to expel the more Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_1.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end modal_successes_1 -->
+
+    <!-- modal_successes_2-->
+    <div class="modal fade" id="modal_successes_2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Fine! You guessed two balls!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>You conquered two of the four cities, build two temples and kicked out the Romans!<br/> Try to guess more the next time to expel the more Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_2.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end modal_successes_2 -->
+
+    <!-- modal_successes_3-->
+    <div class="modal fade" id="modal_successes_3">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Very well! You guessed three ball!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>You conquered three of the four cities and build three temples. Only need to conquer one more city!<br/> Try to guess the last ball to expel all the Romans from Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_3.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" class="btn btn-primary" data-dismiss="modal">Continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end modal_successes_3l -->
+
+    <!-- modal_successes_4-->
+    <div class="modal fade" id="modal_successes_4">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h4 class="modal-title"><strong>Exceptional! You guessed all the balls!</strong></h4>
+          </div>
+          <div class="modal-body">
+            <p><center> Congratulations! You conquered all Syracuse!<br/> You expel all the Romans!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_4_eureka.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" id="continue_to_ranking" class="btn btn-primary" data-dismiss="modal">Exit and continue!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end modal_successes_4 -->
+
+    <!-- Time over Modal-->
+    <div class="modal fade" id="time_over_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Your time was over!</h4>
+          </div>
+          <div class="modal-body">
+            <p><center>The Romans will be the owners of Syracuse!</center></p>
+            <p><center><img src="{% static "img/syracuse_map_0.jpg" %}" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="index" class="btn btn-danger" data-dismiss="modal">Exit and close</a>
+            <a href="basic" class="btn btn-success">New game</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end time_over_modal -->
+
+    <!-- ranking Modal-->
+    <div class="modal fade" id="ranking_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="final_time_text" class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <p><center>It is necessary to celebrate this!<br />Put your name or nick in the form below, press enter and you will appear in the Ranking.</center></p>
+            <form action="{% url 'basic_game' %}" method="post">
+              {% csrf_token %}
+                <label for="nickname">Name or Nick</label>
+                <input type="text" class="form-control" name="nickname" id="nickname_form" placeholder="Enter your name or nick"/>
+                <input id="time_needed_field" type="hidden" name="time_needed" value="3">
+            </form>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end ranking_modal -->
+
+</div><!-- end left_colum -->
+</div><!-- end master_row -->
+
+<script type="text/javascript">
+//$('div[id^=ball_]').toggle("highlight");
+</script>
+
+<script>
+ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
+panel_counter = 0;
+sum_balls_counter = 0;
+num_successes = 0;
+
+$(function() {
+  $('div[id^=ball_]').draggable({
+    revert : true
+  });
+  
+  $('div[id^=droppable_]').droppable({
+    activeClass: "ui-state-hover",
+    hoverClass: "ui-state-active",
+    drop: function(event, ui) {
+      dropped = $(this);
+      ball_image = ui.draggable.find('img').attr('src');
+      liquid = ui.draggable.find('span').clone();
+      //alert(ui.draggable);
+      dropped.find('div').html('<b>' + liquid.text() + '</b>');
+      dropped.droppable('disable');
+      ball_object = ui.draggable.attr('id');
+      gap = $(this).attr('id');
+      number = parseInt(gap.charAt(12)) + 1;
+      sum_balls_counter = sum_balls_counter + parseInt(number);
+      draggable_ball = ui.draggable;
+      if (ballsArray[number] == ball_object) {
+        //draggable_ball.find("img").attr('src').fadeOut("slow");
+        draggable_ball.find("img").attr('src', '{% static "img/ball_shell.png" %}');
+        $(this).find("img").attr('src', ball_image);
+        num_successes = num_successes + 1;
+        draggable_ball.draggable('destroy');
+      } else {
+        $(this).find("img").attr('src', '{% static "img/ball_shell_hover_danger.png" %}').addClass("ball_properties img-responsive");
+      }
+      if (sum_balls_counter == 10){
+        if (num_successes == 4){
+          minutes = parseInt(total_minutes) - parseInt(total_real) - 1;
+          seconds = 60 - seconds_in_minute;
+          seconds = pretty_time_string(seconds);
+          if (seconds == 60) {
+            seconds = 0;
+          }
+          $('h4[id=final_time_text]').html('You expel the Romans in ' + minutes + ' minutes and ' + seconds + ' seconds!');
+          $('input[id=time_needed_field]').attr('value', minutes + ':' + seconds);
+          clearInterval(timer);
+          $('div[id=timer_panel]').remove()
+        }
+        sum_balls_counter = 0;
+        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
+        $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
+        $('#modal_successes_' + num_successes).modal('show');
+        num_successes = 0;
+        panel_counter = panel_counter + 1;
+        img_list = $('div[id=left_span_' + (panel_counter - 1) + ']').find('img');
+        $.each(img_list, function(key, value) {
+          //test = this;
+          img_string = value.src;
+          if (img_string.search('danger') == -1) {
+            $('div[id=left_span_' + panel_counter + ']').find('div[id=droppable_' + panel_counter + '_' +  key + ']').find('img').attr('src',img_string)
+            sum_balls_counter = sum_balls_counter + key + 1;
+            num_successes = num_successes + 1;
+          } 
+          //alert(key);
+          //alert(value);
+        });
+        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
+        $('div[id=left_span_' + panel_counter + '] .panel-heading .panel-title').removeClass('hidden');
+        $('div[id=left_span_' + panel_counter + '] .ui-widget-content .hidden').removeClass('hidden');
+      }
+    }
+  });
+});
+</script>
+
+<script>
+
+// DEBUG - var total_minutes = 1;
+var total_minutes = 4;
+var total_real = parseInt(total_minutes) - 1;
+// DEBUG - var seconds_in_minute= 2;
+var seconds_in_minute= 59;
+var progress_bar_total = parseInt(total_minutes)*60;
+step = parseFloat(progress_bar_total / 100)
+progress_bar_actual = 0;
+
+function pretty_time_string(num) {
+    return ( num < 10 ? "0" : "" ) + num;
+}
+
+timer = setInterval(function() {
+  progress_bar_actual = parseFloat(parseFloat(100) - parseFloat((parseFloat(total_real)*60 + parseFloat(seconds_in_minute)) / parseFloat(step)))
+  $('div[id=progress_clock]').css("width", progress_bar_actual + "%")//; = ;
+  seconds_in_minute = pretty_time_string(seconds_in_minute)
+  $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
+  seconds_in_minute = parseInt(seconds_in_minute) - 1
+  if (seconds_in_minute < 0) {
+    if (total_real != 0) {
+      total_real = parseInt(total_real) - 1
+      seconds_in_minute = 59;
+    } else {
+      clearInterval(timer);
+      $('div[id=timer_panel]').remove()
+      $('#time_over_modal').modal('show');
+    }
+  }
+}, 1000);
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function () {
+  $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
+  $('#initial_modal').modal('show');
+  $('.bxslider').bxSlider();
+});
+$("#instructions_button").click(function() {
+  $('body').chardinJs('start');
+});
+$("#continue_to_ranking").click(function() {
+  $('#ranking_modal').modal('show');
+});
+</script>
+
+{% endblock %}
