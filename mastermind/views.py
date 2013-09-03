@@ -17,10 +17,10 @@ def basic_game(request):
 	if request.method == 'GET':
 		print "Basic"
 		balls = Ball.objects.all()
-		balls_colour_list = []
+		balls_colour_list = ["",]
 		for ball in balls:
-			#print ball.colour
-			balls_colour_list.append(ball.colour)
+			print ball.get_colour_display()
+			balls_colour_list.append("ball_" + ball.get_colour_display())
 		#print balls_colour_list
 		#context = balls_colour_list
 		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
