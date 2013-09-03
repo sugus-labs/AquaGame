@@ -12,20 +12,23 @@ def return_all_participants_list():
 	context = {'participant_list': participant_list}
 	return context
 
+def return_balls_to_HTML():
+	balls_db = Ball.objects.all()
+	balls_colour_list = ["",]
+	for ball in balls_db:
+		print ball.get_colour_display()
+		balls_colour_list.append('ball_' + ball.get_colour_display())
+	balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
+	return balls_json, balls_db
+
 def index(request):
     return render(request, 'mastermind/index.html')
 
 def basic_game(request):
 	if request.method == 'GET':
-		print "Basic"
-		balls = Ball.objects.all()
-		balls_colour_list = ["",]
-		for ball in balls:
-			print ball.get_colour_display()
-			balls_colour_list.append('ball_' + ball.get_colour_display())
-		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
-		print balls_json
-		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls, "attempts": range(attempts_num)})
+		#print "Basic template called"
+		balls_json, balls_db = return_balls_to_HTML()
+		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num)})
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
@@ -38,8 +41,9 @@ def basic_game(request):
 
 def normal_game(request):
 	if request.method == 'GET':
-		print "Normal"
-		return render(request, 'mastermind/normal_game.html')
+		#print "Normal template called"
+		balls_json, balls_db = return_balls_to_HTML()
+		return render(request, 'mastermind/normal_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num)})
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
