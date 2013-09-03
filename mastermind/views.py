@@ -21,11 +21,7 @@ def basic_game(request):
 		for ball in balls:
 			print ball.get_colour_display()
 			balls_colour_list.append("ball_" + ball.get_colour_display())
-		#print balls_colour_list
-		#context = balls_colour_list
 		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
-		#print "context: ", context
-		#context['balls'] = balls_json
 		print balls_json
 		return render(request, 'mastermind/basic_game.html', {"balls": balls_json})
 	else:
@@ -63,7 +59,6 @@ def insert_balls_data(request):
         print balls_formset.errors
         if balls_formset.is_valid():
             balls_formset.save()
-            # do something.
     else:
         balls_formset = BallFormSet()
     return render_to_response('mastermind/insert_balls_data.html', {'balls_formset': balls_formset})
