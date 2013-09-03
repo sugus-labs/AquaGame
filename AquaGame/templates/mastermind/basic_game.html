@@ -30,7 +30,7 @@
           {% for ball in balls_db %}
           <div id="span_ball_{{ ball.get_colour_display }}" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
             <div id="ball_{{ ball.get_colour_display }}" class="ui-widget-content">
-              <p><center><img src="{% static "img/ball_" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <p><center><img src="{% static 'img/ball_'|add:ball.get_colour_display|add:'.png' %}" width= "100%" class="ball_properties img-responsive"/></center></p>
             </div>
           </div>
           {% endfor %}
