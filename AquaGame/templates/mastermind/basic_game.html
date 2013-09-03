@@ -41,11 +41,11 @@
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
         </div>
-        <ul class="bxslider">
-          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
-          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
-          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
-          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="ball_properties img-responsive" /></li>
+        <ul class="bxslider col-12 col-sm-12 col-lg-12">
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="img-responsive" /></li>
+          <li><img src="{% static "img/example_image.jpg" %}" width= "100%" class="img-responsive" /></li>
         </ul>
       </div><!-- end right_span_image -->
 
@@ -305,6 +305,9 @@
   </div><!-- end left_colum -->
 </div><!-- end master_row -->
 
+{%  for attempt in attempts %}
+{{ attempt }}
+{% endfor %}
 
 <script type="text/javascript">
 //$('div[id^=ball_]').toggle("highlight");
@@ -319,6 +322,7 @@ ballsArray = {{ balls_json|safe }};
 panel_counter = 0;
 sum_balls_counter = 0;
 num_successes = 0;
+num_tries = 4;
 
 $(function() {
   $('div[id^=ball_]').draggable({

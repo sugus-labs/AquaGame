@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.forms.models import modelformset_factory
 import json
 
+attempts_num = 4
+
 def return_all_participants_list():
 	participant_list = Participant.objects.order_by('time_needed')
 	context = {'participant_list': participant_list}
@@ -23,7 +25,7 @@ def basic_game(request):
 			balls_colour_list.append('ball_' + ball.get_colour_display())
 		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
 		print balls_json
-		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls})
+		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls, "attempts": range(attempts_num)})
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
