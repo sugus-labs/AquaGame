@@ -75,19 +75,19 @@
           </div>
           <div id="droppable_{{ attempt }}_0" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span class="ball_properties text-primary">GASOLINA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary">GASOIL</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_1" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span class="ball_properties text-primary">AGUA SALADA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary">SALTED WATER</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_2" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span class="ball_properties text-primary">AGUA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary">WATER</span></b></center></p>
           </div>                  
           <div id="droppable_{{ attempt }}_3" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center><p>
-            <p><center><b><span class="ball_properties text-primary">AIRE</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>
           </div>
           <div id="board_{{ attempt }}" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
             <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
@@ -100,19 +100,19 @@
           </div>
           <div id="droppable_{{ attempt }}_0" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">GASOLINA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">GASOIL</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_1" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AGUA SALADA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">SALTED WATER</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_2" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AGUA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">WATER</span></b></center></p>
           </div>                  
           <div id="droppable_{{ attempt }}_3" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">ALCOHOL</span></b></center></p>
           </div>
           <div id="board_{{ attempt }}" class="col-2 col-offset-2 col-sm-2 col-sm-offset-2 col-lg-offset-2 col-lg-2">
             <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="hidden img-responsive"/></center><p>
@@ -319,18 +319,22 @@ $(function() {
           $('input[id=time_needed_field]').attr('value', minutes + ':' + seconds);
           clearInterval(timer);
           $('div[id=timer_panel]').remove()
-        }
-        sum_balls_counter = 0;
-        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
-        $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
-        image_string = "img/square_board_" + num_successes + ".png";
-        $('div[id=board_' + panel_counter + ']').find('img').attr('src', "{% static "" %}" + image_string );
-        $('#modal_successes_' + num_successes).modal('show');
+          image_string = "img/square_board_" + num_successes + ".png";
+          $('div[id=board_' + panel_counter + ']').find('img').attr('src', "{% static "" %}" + image_string );
+          $('#modal_successes_' + num_successes).modal('show');
+        } else {
+          sum_balls_counter = 0;
+          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-primary').addClass('panel-info');
+          $('div[id=left_span_' + panel_counter + '] .panel-heading').remove();
+          image_string = "img/square_board_" + num_successes + ".png";
+          $('div[id=board_' + panel_counter + ']').find('img').attr('src', "{% static "" %}" + image_string );
+          $('#modal_successes_' + num_successes).modal('show');
 
-        num_successes = 0;
-        panel_counter = panel_counter + 1;
-        $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
-        $('div[id=left_span_' + panel_counter + '] .hidden').removeClass('hidden');
+          num_successes = 0;
+          panel_counter = panel_counter + 1;
+          $('div[id=left_span_' + panel_counter + ']').removeClass('panel-info').addClass('panel-primary');
+          $('div[id=left_span_' + panel_counter + '] .hidden').removeClass('hidden');
+        }
       }
     }
   });

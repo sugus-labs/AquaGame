@@ -87,7 +87,7 @@
           </div>                  
           <div id="droppable_{{ attempt }}_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center><p>
-            <p><center><b><span class="ball_properties text-primary">AIR</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>
           </div>
         </div><!-- end left_span_0 -->
         {% else %}
@@ -97,19 +97,19 @@
           </div>
           <div id="droppable_{{ attempt }}_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">GASOLINA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">GASOIL</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AGUA SALADA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">SALTED WATER</span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AGUA</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">WATER</span></b></center></p>
           </div>                  
           <div id="droppable_{{ attempt }}_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class='hidden img-responsive'/></center></p>
-            <p><center><b><span class="ball_properties text-primary hidden">AIRE</span></b></center></p>
+            <p><center><b><span class="ball_properties text-primary hidden">ALCOHOL</span></b></center></p>
           </div>
         </div><!-- end left_span_1 -->
         {% endif %}      
@@ -277,7 +277,6 @@ ballsArray = {{ balls_json|safe }};
 panel_counter = 0;
 sum_balls_counter = 0;
 num_successes = 0;
-num_tries = 4;
 
 $(function() {
   $('div[id^=ball_]').draggable({
