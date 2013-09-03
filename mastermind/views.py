@@ -7,6 +7,8 @@ import json
 
 attempts_num = 4
 
+###################  UTIL FUNCTIONS!
+
 def return_all_participants_list():
 	participant_list = Participant.objects.order_by('time_needed')
 	context = {'participant_list': participant_list}
@@ -20,6 +22,8 @@ def return_balls_to_HTML():
 		balls_colour_list.append('ball_' + ball.get_colour_display())
 	balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
 	return balls_json, balls_db
+
+#################### URL FUNCTIONS!
 
 def index(request):
     return render(request, 'mastermind/index.html')
