@@ -20,10 +20,10 @@ def basic_game(request):
 		balls_colour_list = ["",]
 		for ball in balls:
 			print ball.get_colour_display()
-			balls_colour_list.append("ball_" + ball.get_colour_display())
+			balls_colour_list.append('ball_' + ball.get_colour_display())
 		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
 		print balls_json
-		return render(request, 'mastermind/basic_game.html', {"balls": balls_json})
+		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls})
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']

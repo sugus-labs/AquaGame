@@ -26,7 +26,11 @@
         <div class="panel-heading">
           <h3 class="panel-title">Select the balls and drag to their positions</h3>
         </div>
+        {% for ball in balls_db %}
+            {{ ball.get_colour_display }}
+        {% endfor %}
         <div class="panel-body">
+          
           <div id="span_ball_blue" class="col-3 col-sm-3 col-lg-3" style="background-color: #f0f0f0">
             <div id="ball_blue" class="ui-widget-content">
               <p><center><img src="{% static "img/ball_blue.png" %}" width= "100%" class="ball_properties img-responsive"/></center></p>
@@ -323,14 +327,16 @@
 </div><!-- end master_row -->
 
 
-
 <script type="text/javascript">
 //$('div[id^=ball_]').toggle("highlight");
 </script>
 
 <script>
-ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
-ballsArray_p = {{ balls|safe }}
+//ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
+ballsArray = {{ balls_json|safe }};
+$.each(ballsArray, function() {
+  alert(this);
+}); 
 panel_counter = 0;
 sum_balls_counter = 0;
 num_successes = 0;
