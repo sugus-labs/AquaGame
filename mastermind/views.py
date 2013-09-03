@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from mastermind.models import Ball, Participant, BallForm
 from django.utils import timezone
 from django.forms.models import modelformset_factory
+import json
 
 def return_all_participants_list():
 	participant_list = Participant.objects.order_by('time_needed')
@@ -14,14 +15,19 @@ def index(request):
 
 def basic_game(request):
 	if request.method == 'GET':
+		print "Basic"
 		balls = Ball.objects.all()
 		balls_colour_list = []
 		for ball in balls:
 			#print ball.colour
 			balls_colour_list.append(ball.colour)
 		#print balls_colour_list
-		context = balls_colour_list
-		return render(request, 'mastermind/basic_game.html', context)
+		#context = balls_colour_list
+		balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
+		#print "context: ", context
+		#context['balls'] = balls_json
+		print balls_json
+		return render(request, 'mastermind/basic_game.html', {"balls": balls_json})
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
@@ -34,6 +40,7 @@ def basic_game(request):
 
 def normal_game(request):
 	if request.method == 'GET':
+		print "Normal"
 		return render(request, 'mastermind/normal_game.html')
 	else:
 		nickname = request.POST['nickname']

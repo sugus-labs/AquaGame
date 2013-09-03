@@ -319,17 +319,20 @@
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end ranking_modal -->
+{{ balls }}
+{% for ball in balls %}
+{{ ball }}
+{% endfor %}
 
 </div><!-- end left_colum -->
 </div><!-- end master_row -->
-
 <script type="text/javascript">
 //$('div[id^=ball_]').toggle("highlight");
 </script>
 
 <script>
 ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
-ballsArray_python = {{ balls_colour_list }}
+ballsArray_p = {{ balls|safe }}
 panel_counter = 0;
 sum_balls_counter = 0;
 num_successes = 0;
