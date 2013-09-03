@@ -20,15 +20,16 @@
   }*/
   </style>
 
-  <div id="span_master row-fluid">
+  <div id="span_master">
     <div id="right_column" class="col-lg-6">
-      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+
+      <div id="right_span_main" class="col-12 col-sm-12 col-lg-8 panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">Select the balls and drag to their positions</h3>
         </div>
         <div class="panel-body">
           {% for ball in balls_db %}
-          <div id="span_ball_{{ ball.get_colour_display }}" class="col-2 col-sm-2 col-sm-offset-2 col-lg-2 col-lg-offset-2" style="background-color: #f0f0f0">
+          <div id="span_ball_{{ ball.get_colour_display }}" class="col-3 col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3" style="background-color: #f0f0f0">
             <div id="ball_{{ ball.get_colour_display }}" class="ui-widget-content">
               <p><center><img src="{% static 'img/ball_'|add:ball.get_colour_display|add:'.png' %}" width= "100%" class="ball_properties img-responsive"/></center></p>
             </div>
@@ -37,7 +38,15 @@
         </div>
       </div><!-- end right_span_main -->
 
-      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Select the ball based on the photo and drag it to their correct position." data-position="bottom">
+      <div id="right_span_buttons" class="col-12 col-sm-12 col-lg-4 panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Move the balls</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div><!-- end right_span_main -->
+
+      <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
         </div>
@@ -69,7 +78,7 @@
 
       {%  for attempt in attempts %}
         {% if forloop.first %}
-        <div id="left_span_{{ attempt }}" class="col-12 col-sm-12 col-lg-12 panel panel-primary" data-intro="Once you selected the balls based drag here and check if you are right. Remenber that you only have four opportunities." data-position="bottom">
+        <div id="left_span_{{ attempt }}" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Drop the balls here</h3> 
           </div>
@@ -268,7 +277,7 @@
       </div><!-- end modal-dialog -->
     </div><!-- end ranking_modal -->
 
-</div><!-- end left_colum -->
+  </div><!-- end left_colum -->
 </div><!-- end master_row -->
 
 <script type="text/javascript">
