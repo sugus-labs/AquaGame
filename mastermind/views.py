@@ -15,7 +15,7 @@ def return_all_participants_list():
 	return context
 
 def return_balls_to_HTML():
-	balls_db = Ball.objects.all()
+	balls_db = Ball.objects.all().reverse()
 	balls_colour_list = ["",]
 	for ball in balls_db:
 		print ball.get_colour_display()
