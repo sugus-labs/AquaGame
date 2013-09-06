@@ -22,8 +22,9 @@ def return_balls_to_HTML():
 		print ball.get_colour_display()
 		balls_colour_list.append('ball_' + ball.get_colour_display())
 	random.shuffle(balls_colour_list)
-	balls_colour_list.insert(0, "")
+	balls_colour_list.insert(0, '')
 	balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
+	print "JSON: ",balls_json
 	return balls_json, balls_db
 
 #################### URL FUNCTIONS!

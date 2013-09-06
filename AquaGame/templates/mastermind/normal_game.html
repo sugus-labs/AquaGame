@@ -80,8 +80,7 @@
           <div class="panel-heading">
             <h3 class="panel-title">Drop the balls here</h3> 
           </div>
-          {%  for ball in balls_json %}
-          {{ ball }}
+
           <div id="droppable_{{ attempt }}_0" class="ui-widget-content col-2 col-sm-2 col-lg-2">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
             <p><center><b><span class="ball_properties text-primary">ALCOHOL</span></b></center></p>
@@ -102,7 +101,7 @@
             <p><center><img src="{% static "img/square_board_without.png" %}" width= "100%" class="img-responsive"/></center><p>
           </div>
         </div><!-- end left_span_0 -->
-        {% endfor %} 
+
         {% else %}
         <div id="left_span_{{ attempt }}" class="col-12 col-sm-12 col-lg-12 panel panel-info">
           <div class="panel-heading">
