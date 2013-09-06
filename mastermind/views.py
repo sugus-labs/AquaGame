@@ -58,9 +58,9 @@ def retrieve_status(reservation, client):
 	commandstring = response.commandstring
 	# FALSE = DOWN
 	print commandstring
-	blue_ball = json.loads(commandstring)['blue']
-	#print blue_ball
-	return json.loads(commandstring)
+	#blue_ball = json.loads(commandstring)['blue']
+	#json.loads(commandstring)
+	return commandstring 
 
 #################### URL FUNCTIONS!
 
@@ -71,7 +71,6 @@ def basic_game(request):
 	if request.method == 'GET':
 		reservation, client = login_on_weblab()
 		status_list = retrieve_status(reservation, client)
-		#print "Basic template called"
 		balls_json, balls_db, liquids_json = return_balls_to_HTML()
 		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json })
 	else:
@@ -86,9 +85,10 @@ def basic_game(request):
 
 def normal_game(request):
 	if request.method == 'GET':
-		#print "Normal template called"
+		reservation, client = login_on_weblab()
+		status_list = retrieve_status(reservation, client)
 		balls_json, balls_db, liquids_json = return_balls_to_HTML()
-		return render(request, 'mastermind/normal_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json })
+		return render(request, 'mastermind/normal_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json, "status_list": status_list })
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']

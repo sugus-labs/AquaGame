@@ -38,14 +38,6 @@
         </div>
       </div><!-- end right_span_main -->
 
-      <!--<div id="right_span_buttons" class="col-12 col-sm-12 col-lg-4 panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Move the balls</h3>
-        </div>
-        <div class="panel-body">
-        </div>
-      </div><!-- end right_span_main -->
-
       <div id="right_span_image" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
@@ -58,6 +50,22 @@
           <a id="right_image" class="btn btn-default">View Right Image</a>
         </div>
       </div>
+
+      <div id="right_span_main" class="col-12 col-sm-12 col-lg-12 panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Move the balls</h3>
+        </div>
+        <div class="panel-body">
+          {% for ball in balls_db %}
+          <div id="span_ball_{{ ball.get_colour_display }}" class="col-3 col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3" style="background-color: #f0f0f0">
+            <div id="ball_{{ ball.get_colour_display }}" class="ui-widget-content">
+              <p><center><img src="{% static 'img/ball_'|add:ball.get_colour_display|add:'.png' %}" width= "100%" class="ball_properties img-responsive"/></center></p>
+              <p><center><button><img id="button_{{ ball.get_colour_display }}" width= "100%" class="ball_properties img-responsive"/></button></center></p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div><!-- end right_span_main -->
 
     </div><!-- end right_column -->
 
@@ -324,10 +332,19 @@
 <script>
 ballsArray = {{ balls_json|safe }};
 liquidsArray = {{ liquids_json|safe }};
+initialstatus = {{ status_list|safe }}
 $.each(ballsArray, function(key, value) {
     for ( var i = 0; i < 4; i++ ) {
         $("span[id^=span_" + i + "_" + key).html(liquidsArray[key + 1])
     }
+});
+$.each(initialstatus, function(key, value) {
+  //alert(key + " - " + value)
+  if (value == true){
+    $("img[id=button_"+ key).attr('src', '{% static "img/arrow_down.png" %}')
+  } else {
+    $("img[id=button_"+ key).attr('src', '{% static "img/arrow_up.png" %}')
+  }
 }); 
 panel_counter = 0;
 sum_balls_counter = 0;
@@ -431,7 +448,6 @@ timer = setInterval(function() {
 $(document).ready(function () {
   $('span[id=timer]').text(total_real + ":" + seconds_in_minute);
   $('#initial_modal').modal('show');
-  $('.bxslider').bxSlider();
 });
 $("#instructions_button").click(function() {
   $('body').chardinJs('start');
@@ -444,6 +460,10 @@ $("#left_image").click(function() {
 });
 $("#right_image").click(function() {
   $('#right_image_modal').modal('show');
+});
+
+$("img[id^⁼button_]").click(function() {
+  alert("YEAH")
 });
 
 </script>
