@@ -5,6 +5,10 @@ from django.utils import timezone
 from django.forms.models import modelformset_factory
 import json
 import random
+import time
+
+from weblabdeusto.weblabdeusto_client import WebLabDeustoClient
+from weblabdeusto.weblabdeusto_data import ExperimentId, Reservation, Command
 
 attempts_num = 4
 
@@ -23,7 +27,7 @@ def return_balls_to_HTML():
 		#print ball.get_colour_display()
 		balls_colour_list.append('ball_' + ball.get_colour_display())
 	random.shuffle(balls_colour_list)
-	print "LIST: ",balls_colour_list
+	#print "LIST: ",balls_colour_list
 	for ball_colour in balls_colour_list:
 		for ball in balls_db:
 			if ball_colour[5:] == ball.get_colour_display():
@@ -32,16 +36,41 @@ def return_balls_to_HTML():
 	balls_liquid_list.insert(0, '')
 	balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
 	liquids_json = json.dumps([unicode(liquid) for liquid in balls_liquid_list])
-	print liquids_json
+	#print liquids_json
 	return balls_json, balls_db, liquids_json
+
+def login_on_weblab():
+	client = WebLabDeustoClient("http://www.weblab.deusto.es/weblab/")
+	session_id = client.login("gustavo.martin", "221186")
+	exp_id = ExperimentId("aquarium", "Aquatic experiments")
+	reservation = client.reserve_experiment(session_id, exp_id, "{}", "{}")
+	reservation_id = reservation.reservation_id
+	while reservation.status != Reservation.CONFIRMED:
+		print "Retrieving status"
+		reservation = client.get_reservation_status(reservation_id)
+		print reservation.status
+		time.sleep(3)
+	return reservation, client
+
+def retrieve_status(reservation, client):
+	reservation_id = reservation.reservation_id
+	response = client.send_command(reservation_id, Command("get-status"))
+	commandstring = response.commandstring
+	# FALSE = DOWN
+	print commandstring
+	blue_ball = json.loads(commandstring)['blue']
+	#print blue_ball
+	return json.loads(commandstring)
 
 #################### URL FUNCTIONS!
 
 def index(request):
-    return render(request, 'mastermind/index.html')
+	return render(request, 'mastermind/index.html')
 
 def basic_game(request):
 	if request.method == 'GET':
+		reservation, client = login_on_weblab()
+		status_list = retrieve_status(reservation, client)
 		#print "Basic template called"
 		balls_json, balls_db, liquids_json = return_balls_to_HTML()
 		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json })
