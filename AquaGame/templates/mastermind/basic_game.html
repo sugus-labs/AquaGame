@@ -41,12 +41,19 @@
         <div class="panel-heading">
           <h3 class="panel-title">Selected image</h3>
         </div>
+        <div id="video_image" class="col-12 col-sm-12 col-lg-12 panel">
           <img src="http://www.weblab.deusto.es/webcam/fishtank1/video.mjpeg" width= "100%" class="ball_properties img-responsive" />
 <!--         <ul class="bxslider col-12 col-sm-12 col-lg-12">
           <li><img src="https://www.weblab.deusto.es/aquarium/tmp/136867976506/processed_ball_136867976506.jpg" width= "100%" class="ball_properties img-responsive" /></li>
           <li><img src="https://www.weblab.deusto.es/aquarium/tmp/136868063972/processed_ball_136868063972.jpg" width= "100%" class="ball_properties img-responsive" /></li>
         </ul> -->
-      </div><!-- end right_span_image -->
+        </div><!-- end video_image -->
+        <div class="btn-group btn-group-justified">
+        <a id="left_image" class="btn btn-default">View Left Image</a>
+        <a id="right_image" class="btn btn-default">View Right Image</a>
+      </div>
+      </div>
+          
 
     </div><!-- end right_column -->
 
@@ -261,8 +268,46 @@
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end ranking_modal -->
+
+    <!-- left_image Modal-->
+    <div class="modal fade" id="left_image_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="final_time_text" class="modal-title">Left Image processed</h4>
+          </div>
+          <div class="modal-body">
+            <p><center><img src="https://www.weblab.deusto.es/aquarium/tmp/136867976506/processed_ball_136867976506.jpg" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" id="continue_to_ranking" class="btn btn-primary" data-dismiss="modal">Exit and continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end ranking_modal -->   
+
+    <!-- right_image Modal-->
+    <div class="modal fade" id="right_image_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="final_time_text" class="modal-title">Right Image processed</h4>
+          </div>
+          <div class="modal-body">
+            <p><center><img src="https://www.weblab.deusto.es/aquarium/tmp/136868063972/processed_ball_136868063972.jpg" width= "100%" class='img-responsive'></center></p>
+          </div>
+          <div class="modal-footer">
+            <a href="" id="continue_to_ranking" class="btn btn-primary" data-dismiss="modal">Exit and continue guessing!</a>
+          </div>
+        </div><!-- end modal-content -->
+      </div><!-- end modal-dialog -->
+    </div><!-- end ranking_modal -->    
+
+
   </div><!-- end left_colum -->
 </div><!-- end master_row -->
+
+
 
 <script type="text/javascript">
 //$('div[id^=ball_]').toggle("highlight");
@@ -395,6 +440,12 @@ $("#instructions_button").click(function() {
 });
 $("#continue_to_ranking").click(function() {
   $('#ranking_modal').modal('show');
+});
+$("#left_image").click(function() {
+  $('#left_image_modal').modal('show');
+});
+$("#right_image").click(function() {
+  $('#right_image_modal').modal('show');
 });
 </script>
 
