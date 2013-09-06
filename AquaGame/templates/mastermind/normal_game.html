@@ -462,8 +462,9 @@ $("#right_image").click(function() {
   $('#right_image_modal').modal('show');
 });
 
-$("img[id^⁼button_]").click(function() {
-  alert("YEAH")
+$("img[id^=button_]").click(function() {
+  button = $(this)
+  $.post("move", { command: button.attr('id').slice(7) } );
 });
 
 </script>

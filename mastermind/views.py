@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from mastermind.models import Ball, Participant, BallForm
 from django.utils import timezone
 from django.forms.models import modelformset_factory
@@ -11,7 +11,8 @@ from weblabdeusto.weblabdeusto_client import WebLabDeustoClient
 from weblabdeusto.weblabdeusto_data import ExperimentId, Reservation, Command
 
 attempts_num = 4
-
+global client
+global reservation
 ###################  UTIL FUNCTIONS!
 
 def return_all_participants_list():
@@ -63,6 +64,13 @@ def retrieve_status(reservation, client):
 	return commandstring 
 
 #################### URL FUNCTIONS!
+
+def move(request):
+	if request.method == 'POST':
+		print request.REQUEST
+		status_list = retrieve_status(reservation, client)
+		print status_list
+		return HttpResponse("POST to Server OK")
 
 def index(request):
 	return render(request, 'mastermind/index.html')
