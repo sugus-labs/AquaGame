@@ -58,8 +58,8 @@ def basic_game(request):
 def normal_game(request):
 	if request.method == 'GET':
 		#print "Normal template called"
-		balls_json, balls_db = return_balls_to_HTML()
-		return render(request, 'mastermind/normal_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num)})
+		balls_json, balls_db, liquids_json = return_balls_to_HTML()
+		return render(request, 'mastermind/normal_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json })
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
