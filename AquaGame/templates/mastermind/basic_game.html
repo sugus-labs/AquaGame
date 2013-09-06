@@ -74,19 +74,19 @@
 
           <div id="droppable_{{ attempt }}_0" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span id="span_{{ attempt }}_0" class="ball_properties text-primary">ALCOHOL</span></b></center></p>
+            <p><center><b><span id="span_{{ attempt }}_0" class="ball_properties text-primary"></span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_1" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span id="span_{{ attempt }}_1" class="ball_properties text-primary">WATER</span></b></center></p>
+            <p><center><b><span id="span_{{ attempt }}_1" class="ball_properties text-primary"></span></b></center></p>
           </div>
           <div id="droppable_{{ attempt }}_2" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center></p>
-            <p><center><b><span id="span_{{ attempt }}_2" class="ball_properties text-primary">SALTED WATER</span></b></center></p>
+            <p><center><b><span id="span_{{ attempt }}_2" class="ball_properties text-primary"></span></b></center></p>
           </div>                  
           <div id="droppable_{{ attempt }}_3" class="ui-widget-content col-3 col-sm-3 col-lg-3">
             <p><center><img src="{% static "img/ball_shell_hover_question.png" %}" width= "100%" class="img-responsive"/></center><p>
-            <p><center><b><span id="span_{{ attempt }}_3" class="ball_properties text-primary">OIL</span></b></center></p>
+            <p><center><b><span id="span_{{ attempt }}_3" class="ball_properties text-primary"></span></b></center></p>
           </div>
         </div><!-- end left_span_0 --> 
         {% else %}
@@ -270,10 +270,10 @@
 <script>
 //ballsArray = [ "","ball_blue", "ball_yellow", "ball_purple", "ball_white" ];
 ballsArray = {{ balls_json|safe }};
-
+liquidsArray = {{ liquids_json|safe }};
 $.each(ballsArray, function(key, value) {
-    if (key != 0) {
-      alert(key + "" + value);
+    for ( var i = 0; i < 4; i++ ) {
+        feo = $("span[id^=span_" + i + "_" + key).html(liquidsArray[key + 1])
     }
 }); 
 

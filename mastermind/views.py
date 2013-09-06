@@ -18,14 +18,22 @@ def return_all_participants_list():
 def return_balls_to_HTML():
 	balls_db = Ball.objects.all().reverse()
 	balls_colour_list = []
+	balls_liquid_list = []
 	for ball in balls_db:
-		print ball.get_colour_display()
+		#print ball.get_colour_display()
 		balls_colour_list.append('ball_' + ball.get_colour_display())
 	random.shuffle(balls_colour_list)
+	print "LIST: ",balls_colour_list
+	for ball_colour in balls_colour_list:
+		for ball in balls_db:
+			if ball_colour[5:] == ball.get_colour_display():
+				balls_liquid_list.append(ball.liquid_contained)
 	balls_colour_list.insert(0, '')
+	balls_liquid_list.insert(0, '')
 	balls_json = json.dumps([unicode(ball) for ball in balls_colour_list])
-	print "JSON: ",balls_json
-	return balls_json, balls_db
+	liquids_json = json.dumps([unicode(liquid) for liquid in balls_liquid_list])
+	print liquids_json
+	return balls_json, balls_db, liquids_json
 
 #################### URL FUNCTIONS!
 
@@ -35,8 +43,8 @@ def index(request):
 def basic_game(request):
 	if request.method == 'GET':
 		#print "Basic template called"
-		balls_json, balls_db = return_balls_to_HTML()
-		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num)})
+		balls_json, balls_db, liquids_json = return_balls_to_HTML()
+		return render(request, 'mastermind/basic_game.html', {"balls_json": balls_json, "balls_db": balls_db, "attempts": range(attempts_num), "liquids_json": liquids_json })
 	else:
 		nickname = request.POST['nickname']
 		time = request.POST['time_needed']
