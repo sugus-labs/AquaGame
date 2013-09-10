@@ -11,8 +11,8 @@ from weblabdeusto.weblabdeusto_client import WebLabDeustoClient
 from weblabdeusto.weblabdeusto_data import ExperimentId, Reservation, Command
 
 attempts_num = 4
-global client
-global reservation
+#global client = 0
+#global reservation = 0
 ###################  UTIL FUNCTIONS!
 
 def return_all_participants_list():
