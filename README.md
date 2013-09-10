@@ -22,10 +22,24 @@ AquaGame is developed on a Ubuntu 12.04 system, running:
    * [python-mysqldb 1.2.3](http://mysql-python.sourceforge.net/MySQLdb.html)
    * [mysql-server 5.5.32](http://www.mysql.com)
    * [Supervisord](http://http://supervisord.org/)
+   * [Apache2](http://httpd.apache.org/)
 
 It might work with other versions.
 
 ## Setting up the environment and config ##
+
+To put in production only needs a little configuration in apache httpd.conf.
+
+	$ sudo nano /etc/apache2/httpd.conf
+
+In this file put this two lines at the start of the file:
+
+	WSGIScriptAlias /AquaGame/app/ /home/[your user]/[AquaGame_root_path]/RELab/wsgi.py
+	WSGIPythonPath /home/[your user]/[AquaGame_root_path]/
+
+And add this line to the end of that file:
+
+	Alias /AquaGame/static/ /home/[your user]/[AquaGame_root_path]/AquaGame/static
 
 Put your terminal in the root directory of the project and type:
 
